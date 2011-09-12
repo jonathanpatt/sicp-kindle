@@ -27,7 +27,7 @@
         <li>To apply a compound procedure to arguments, evaluate the body of the procedure with each formal parameter replaced by the corresponding argument.</li>
     </ul>
 
-    <p>Once we admit assignment into our programming language, such a definition is no longer adequate. In particular, section&nbsp;<a href="book-Z-H-20.html#%_sec_3.1.3">3.1.3</a> argued that, in the presence of assignment, a variable can no longer be considered to be merely a name for a value. Rather, a variable must somehow designate a ``place'' in which values can be stored. In our new model of evaluation, these places will be maintained in structures called <a name="%_idx_3038"></a><em>environments</em>.</p>
+    <p>Once we admit assignment into our programming language, such a definition is no longer adequate. In particular, section&nbsp;<a href="book-Z-H-20.html#%_sec_3.1.3">3.1.3</a> argued that, in the presence of assignment, a variable can no longer be considered to be merely a name for a value. Rather, a variable must somehow designate a “place” in which values can be stored. In our new model of evaluation, these places will be maintained in structures called <a name="%_idx_3038"></a><em>environments</em>.</p>
 
     <p>An environment is a sequence of <a name="%_idx_3040"></a><em>frames</em>. Each frame is a table (possibly empty) of <a name="%_idx_3042"></a><em>bindings</em>, which associate variable names with their corresponding values. (A single frame may contain at most one binding for any variable.) Each frame also has a pointer to its <a name="%_idx_3044"></a><a name="%_idx_3046"></a><em>enclosing environment</em>, unless, for the purposes of discussion, the frame is considered to be <a name="%_idx_3048"></a><a name="%_idx_3050"></a><em>global</em>. The <a name="%_idx_3052"></a><em>value of a variable</em> with respect to an environment is the value given by the binding of the variable in the first frame in the environment that contains a binding for that variable. If no frame in the sequence specifies a binding for the variable, then the variable is said to be <a name="%_idx_3054"></a><a name="%_idx_3056"></a><em>unbound</em> in the environment.</p>
 
@@ -105,7 +105,7 @@
 
     <p>Now that we have seen how procedures are created, we can describe how procedures are applied. The environment model specifies: To apply a procedure to arguments, create a new environment containing a frame that binds the parameters to the values of the arguments. The enclosing environment of this frame is the environment specified by the procedure. Now, within this new environment, evaluate the procedure body.</p>
 
-    <p>To show how this rule is followed, figure&nbsp;<a href="#%_fig_3.3">3.3</a> illustrates the environment structure created by evaluating the expression <tt>(square 5)</tt> in the global environment, where <tt>square</tt> is the procedure generated in figure&nbsp;<a href="#%_fig_3.2">3.2</a>. Applying the procedure results in the creation of a new environment, labeled E1 in the figure, that begins with a frame in which <tt>x</tt>, the formal parameter for the procedure, is bound to the argument 5. The pointer leading upward from this frame shows that the frame's enclosing environment is the global environment. The global environment is chosen here, because this is the environment that is indicated as part of the <tt>square</tt> procedure object. Within E1, we evaluate the body of the procedure, <tt>(* x x)</tt>. Since the value of <tt>x</tt> in E1 is 5, the result is <tt>(*&nbsp;5&nbsp;5)</tt>, or&nbsp;25. <a name="%_fig_3.3"></a></p>
+    <p>To show how this rule is followed, figure&nbsp;<a href="#%_fig_3.3">3.3</a> illustrates the environment structure created by evaluating the expression <tt>(square 5)</tt> in the global environment, where <tt>square</tt> is the procedure generated in figure&nbsp;<a href="#%_fig_3.2">3.2</a>. Applying the procedure results in the creation of a new environment, labeled E1 in the figure, that begins with a frame in which <tt>x</tt>, the formal parameter for the procedure, is bound to the argument 5. The pointer leading upward from this frame shows that the frame’s enclosing environment is the global environment. The global environment is chosen here, because this is the environment that is indicated as part of the <tt>square</tt> procedure object. Within E1, we evaluate the body of the procedure, <tt>(* x x)</tt>. Since the value of <tt>x</tt> in E1 is 5, the result is <tt>(*&nbsp;5&nbsp;5)</tt>, or&nbsp;25. <a name="%_fig_3.3"></a></p>
 
     <div align="left">
         <div align="left">
@@ -223,14 +223,14 @@
 
     <h3><a href="book-Z-H-4.html#%_toc_%_sec_3.2.3">3.2.3&nbsp;&nbsp;Frames as the Repository of Local State</a></h3>
 
-    <p><a name="%_idx_3098"></a><a name="%_idx_3100"></a><a name="%_idx_3102"></a> <a name="%_idx_3104"></a>We can turn to the environment model to see how procedures and assignment can be used to represent objects with local state. As an example, consider the ``withdrawal processor'' from section&nbsp;<a href="book-Z-H-20.html#%_sec_3.1.1">3.1.1</a> created by calling the procedure</p>
+    <p><a name="%_idx_3098"></a><a name="%_idx_3100"></a><a name="%_idx_3102"></a> <a name="%_idx_3104"></a>We can turn to the environment model to see how procedures and assignment can be used to represent objects with local state. As an example, consider the “withdrawal processor” from section&nbsp;<a href="book-Z-H-20.html#%_sec_3.1.1">3.1.1</a> created by calling the procedure</p>
 
     <p><tt>(define&nbsp;(make-withdraw&nbsp;balance)<br />
     &nbsp;&nbsp;(lambda&nbsp;(amount)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(&gt;=&nbsp;balance&nbsp;amount)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(begin&nbsp;(set!&nbsp;balance&nbsp;(-&nbsp;balance&nbsp;amount))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;balance)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Insufficient&nbsp;funds")))<br /></tt></p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Insufficient&nbsp;funds”)))<br /></tt></p>
 
     <p>Let us describe the evaluation of</p>
 
@@ -295,7 +295,7 @@
     <p><tt>(if&nbsp;(&gt;=&nbsp;balance&nbsp;amount)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;(begin&nbsp;(set!&nbsp;balance&nbsp;(-&nbsp;balance&nbsp;amount))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;balance)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;"Insufficient&nbsp;funds")<br /></tt></p>
+    &nbsp;&nbsp;&nbsp;&nbsp;“Insufficient&nbsp;funds”)<br /></tt></p>
 
     <p>The resulting environment structure is shown in figure&nbsp;<a href="#%_fig_3.8">3.8</a>. The expression being evaluated references both <tt>amount</tt> and <tt>balance</tt>. <tt>Amount</tt> will be found in the first frame in the environment, while <tt>balance</tt> will be found by following the enclosing-environment pointer to E1.</p>
 
@@ -317,7 +317,7 @@
         </table>
     </div>
 
-    <p>When the <tt>set!</tt> is executed, the binding of <tt>balance</tt> in E1 is changed. At the completion of the call to <tt>W1</tt>, <tt>balance</tt> is 50, and the frame that contains <tt>balance</tt> is still pointed to by the procedure object <tt>W1</tt>. The frame that binds <tt>amount</tt> (in which we executed the code that changed <tt>balance</tt>) is no longer relevant, since the procedure call that constructed it has terminated, and there are no pointers to that frame from other parts of the environment. The next time <tt>W1</tt> is called, this will build a new frame that binds <tt>amount</tt> and whose enclosing environment is E1. We see that E1 serves as the ``place'' that holds the local state variable for the procedure object <tt>W1</tt>. Figure&nbsp;<a href="#%_fig_3.9">3.9</a> shows the situation after the call to <tt>W1</tt>.</p>
+    <p>When the <tt>set!</tt> is executed, the binding of <tt>balance</tt> in E1 is changed. At the completion of the call to <tt>W1</tt>, <tt>balance</tt> is 50, and the frame that contains <tt>balance</tt> is still pointed to by the procedure object <tt>W1</tt>. The frame that binds <tt>amount</tt> (in which we executed the code that changed <tt>balance</tt>) is no longer relevant, since the procedure call that constructed it has terminated, and there are no pointers to that frame from other parts of the environment. The next time <tt>W1</tt> is called, this will build a new frame that binds <tt>amount</tt> and whose enclosing environment is E1. We see that E1 serves as the “place” that holds the local state variable for the procedure object <tt>W1</tt>. Figure&nbsp;<a href="#%_fig_3.9">3.9</a> shows the situation after the call to <tt>W1</tt>.</p>
 
     <p><a name="%_fig_3.9"></a></p>
 
@@ -337,7 +337,7 @@
         </table>
     </div>
 
-    <p>Observe what happens when we create a second ``withdraw'' object by making another call to <tt>make-withdraw</tt>:</p>
+    <p>Observe what happens when we create a second “withdraw” object by making another call to <tt>make-withdraw</tt>:</p>
 
     <p><tt>(define&nbsp;W2&nbsp;(make-withdraw&nbsp;100))<br /></tt></p>
 
@@ -369,7 +369,7 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(&gt;=&nbsp;balance&nbsp;amount)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(begin&nbsp;(set!&nbsp;balance&nbsp;(-&nbsp;balance&nbsp;amount))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;balance)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Insufficient&nbsp;funds"))))<br /></tt></p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Insufficient&nbsp;funds”))))<br /></tt></p>
 
     <p><a name="%_idx_3108"></a><a name="%_idx_3110"></a>Recall from section&nbsp;<a href="book-Z-H-12.html#%_sec_1.3.2">1.3.2</a> that <tt>let</tt> is simply syntactic sugar for a procedure call:</p>
 
@@ -448,14 +448,14 @@
     &nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(&gt;=&nbsp;balance&nbsp;amount)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(begin&nbsp;(set!&nbsp;balance&nbsp;(-&nbsp;balance&nbsp;amount))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;balance)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Insufficient&nbsp;funds"))<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Insufficient&nbsp;funds”))<br />
     &nbsp;&nbsp;(define&nbsp;(deposit&nbsp;amount)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;(set!&nbsp;balance&nbsp;(+&nbsp;balance&nbsp;amount))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;balance)<br />
     &nbsp;&nbsp;(define&nbsp;(dispatch&nbsp;m)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;(cond&nbsp;((eq?&nbsp;m&nbsp;'withdraw)&nbsp;withdraw)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((eq?&nbsp;m&nbsp;'deposit)&nbsp;deposit)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(else&nbsp;(error&nbsp;"Unknown&nbsp;request&nbsp;--&nbsp;MAKE-ACCOUNT"<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;(cond&nbsp;((eq?&nbsp;m&nbsp;’withdraw)&nbsp;withdraw)<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((eq?&nbsp;m&nbsp;’deposit)&nbsp;deposit)<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(else&nbsp;(error&nbsp;“Unknown&nbsp;request&nbsp;—&nbsp;MAKE-ACCOUNT”<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m))))<br />
     &nbsp;&nbsp;dispatch)<br /></tt></p>
 
@@ -463,10 +463,10 @@
 
     <p><tt>(define&nbsp;acc&nbsp;(make-account&nbsp;50))<br />
     <br />
-    ((acc&nbsp;'deposit)&nbsp;40)<br />
+    ((acc&nbsp;’deposit)&nbsp;40)<br />
     <i>90</i><br />
     <br />
-    ((acc&nbsp;'withdraw)&nbsp;60)<br />
+    ((acc&nbsp;’withdraw)&nbsp;60)<br />
     <i>30</i><br /></tt></p>
 
     <p>Where is the local state for <tt>acc</tt> kept? Suppose we define another account</p>

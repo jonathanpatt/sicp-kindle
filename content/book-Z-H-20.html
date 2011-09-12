@@ -21,11 +21,11 @@
 
     <h2><a href="book-Z-H-4.html#%_toc_%_sec_3.1">3.1&nbsp;&nbsp;Assignment and Local State</a></h2>
 
-    <p><a name="%_idx_2836"></a><a name="%_idx_2838"></a> We ordinarily view the world as populated by independent objects, each of which has a state that changes over time. An object is said to ``have state'' if its behavior is influenced by its history. A bank account, for example, has state in that the answer to the question ``Can I withdraw $100?'' depends upon the history of deposit and withdrawal transactions. We can characterize an object's state by one or more <a name="%_idx_2840"></a><em>state variables</em>, which among them maintain enough information about history to determine the object's current behavior. In a simple banking system, we could characterize the state of an account by a current balance rather than by remembering the entire history of account transactions.</p>
+    <p><a name="%_idx_2836"></a><a name="%_idx_2838"></a> We ordinarily view the world as populated by independent objects, each of which has a state that changes over time. An object is said to “have state” if its behavior is influenced by its history. A bank account, for example, has state in that the answer to the question “Can I withdraw $100?” depends upon the history of deposit and withdrawal transactions. We can characterize an object’s state by one or more <a name="%_idx_2840"></a><em>state variables</em>, which among them maintain enough information about history to determine the object’s current behavior. In a simple banking system, we could characterize the state of an account by a current balance rather than by remembering the entire history of account transactions.</p>
 
     <p>In a system composed of many objects, the objects are rarely completely independent. Each may influence the states of others through interactions, which serve to couple the state variables of one object to those of other objects. Indeed, the view that a system is composed of separate objects is most useful when the state variables of the system can be grouped into closely coupled subsystems that are only loosely coupled to other subsystems.</p>
 
-    <p>This view of a system can be a powerful framework for organizing computational models of the system. For such a model to be modular, it should be decomposed into computational objects that model the actual objects in the system. Each computational object must have its own <em>local state variables</em> describing the actual object's state. Since the states of objects in the system being modeled change over time, the state variables of the corresponding computational objects must also change. If we choose to model the flow of time in the system by the elapsed time in the computer, then we must have a way to construct computational objects whose behaviors change as our programs run. In particular, if we wish to model state variables by ordinary symbolic names in the programming language, then the language must provide an <a name="%_idx_2842"></a><em>assignment operator</em> to enable us to change the value associated with a name.</p>
+    <p>This view of a system can be a powerful framework for organizing computational models of the system. For such a model to be modular, it should be decomposed into computational objects that model the actual objects in the system. Each computational object must have its own <em>local state variables</em> describing the actual object’s state. Since the states of objects in the system being modeled change over time, the state variables of the corresponding computational objects must also change. If we choose to model the flow of time in the system by the elapsed time in the computer, then we must have a way to construct computational objects whose behaviors change as our programs run. In particular, if we wish to model state variables by ordinary symbolic names in the programming language, then the language must provide an <a name="%_idx_2842"></a><em>assignment operator</em> to enable us to change the value associated with a name.</p>
 
     <p><a name="%_sec_3.1.1"></a></p>
 
@@ -38,7 +38,7 @@
     (withdraw&nbsp;25)<br />
     <i>50</i><br />
     (withdraw&nbsp;60)<br />
-    <i>"Insufficient&nbsp;funds"</i><br />
+    <i>“Insufficient&nbsp;funds”</i><br />
     (withdraw&nbsp;15)<br />
     <i>35</i><br /></tt></p>
 
@@ -52,7 +52,7 @@
     &nbsp;&nbsp;(if&nbsp;(&gt;=&nbsp;balance&nbsp;amount)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(begin&nbsp;(set!&nbsp;balance&nbsp;(-&nbsp;balance&nbsp;amount))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;balance)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Insufficient&nbsp;funds"))<br /></tt></p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Insufficient&nbsp;funds”))<br /></tt></p>
 
     <p>Decrementing <tt>balance</tt> is accomplished by the expression</p>
 
@@ -66,7 +66,7 @@
 
     <p><a name="%_idx_2874"></a><a name="%_idx_2876"></a><tt>Withdraw</tt> also uses the <tt>begin</tt> special form to cause two expressions to be evaluated in the case where the <tt>if</tt> test is true: first decrementing <tt>balance</tt> and then returning the value of <tt>balance</tt>. In general, evaluating the expression</p>
 
-    <p><tt>(begin&nbsp;&lt;<em>exp<sub>1</sub></em>&gt;&nbsp;&lt;<em>exp<sub>2</sub></em>&gt;&nbsp;</tt>... &lt;<em>exp<sub><em>k</em></sub></em>&gt;)<br /></p>
+    <p><tt>(begin&nbsp;&lt;<em>exp<sub>1</sub></em>&gt;&nbsp;&lt;<em>exp<sub>2</sub></em>&gt;&nbsp;</tt>… &lt;<em>exp<sub><em>k</em></sub></em>&gt;)<br /></p>
 
     <p>causes the expressions &lt;<em>exp<sub>1</sub></em>&gt; through &lt;<em>exp<sub><em>k</em></sub></em>&gt; to be evaluated in sequence and the value of the final expression &lt;<em>exp<sub><em>k</em></sub></em>&gt; to be returned as the value of the entire <tt>begin</tt> form.<a href="#footnote_Temp_323" name="call_footnote_Temp_323" id="call_footnote_Temp_323"><sup><small>3</small></sup></a></p>
 
@@ -80,20 +80,20 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(&gt;=&nbsp;balance&nbsp;amount)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(begin&nbsp;(set!&nbsp;balance&nbsp;(-&nbsp;balance&nbsp;amount))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;balance)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Insufficient&nbsp;funds"))))<br /></tt></p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Insufficient&nbsp;funds”))))<br /></tt></p>
 
-    <p>What we have done here is use <tt>let</tt> to establish an environment with a local variable <tt>balance</tt>, bound to the initial value 100. Within this local environment, we use <tt>lambda</tt> to create a procedure that takes <tt>amount</tt> as an argument and behaves like our previous <tt>withdraw</tt> procedure. This procedure -- returned as the result of evaluating the <tt>let</tt> expression -- is <tt>new-withdraw</tt>, which behaves in precisely the same way as <tt>withdraw</tt> but whose variable <tt>balance</tt> is not accessible by any other procedure.<a href="#footnote_Temp_324" name="call_footnote_Temp_324" id="call_footnote_Temp_324"><sup><small>4</small></sup></a></p>
+    <p>What we have done here is use <tt>let</tt> to establish an environment with a local variable <tt>balance</tt>, bound to the initial value 100. Within this local environment, we use <tt>lambda</tt> to create a procedure that takes <tt>amount</tt> as an argument and behaves like our previous <tt>withdraw</tt> procedure. This procedure—returned as the result of evaluating the <tt>let</tt> expression—is <tt>new-withdraw</tt>, which behaves in precisely the same way as <tt>withdraw</tt> but whose variable <tt>balance</tt> is not accessible by any other procedure.<a href="#footnote_Temp_324" name="call_footnote_Temp_324" id="call_footnote_Temp_324"><sup><small>4</small></sup></a></p>
 
     <p>Combining <tt>set!</tt> with local variables is the general programming technique we will use for constructing computational objects with local state. Unfortunately, using this technique raises a serious problem: When we first introduced procedures, we also introduced the substitution model of evaluation (section&nbsp;<a href="book-Z-H-10.html#%_sec_1.1.5">1.1.5</a>) to provide an interpretation of what procedure application means. We said that applying a procedure should be interpreted as evaluating the body of the procedure with the formal parameters replaced by their values. The trouble is that, as soon as we introduce assignment into our language, substitution is no longer an adequate model of procedure application. (We will see why this is so in section&nbsp;<a href="#%_sec_3.1.3">3.1.3</a>.) As a consequence, we technically have at this point no way to understand why the <tt>new-withdraw</tt> procedure behaves as claimed above. In order to really understand a procedure such as <tt>new-withdraw</tt>, we will need to develop a new model of procedure application. In section&nbsp;<a href="book-Z-H-21.html#%_sec_3.2">3.2</a> we will introduce such a model, together with an explanation of <tt>set!</tt> and local variables. First, however, we examine some variations on the theme established by <tt>new-withdraw</tt>.</p>
 
-    <p>The following procedure, <tt>make-withdraw</tt>, creates ``withdrawal processors.'' The formal parameter <tt>balance</tt> in <tt>make-withdraw</tt> specifies the initial amount of money in the account.<a href="#footnote_Temp_325" name="call_footnote_Temp_325" id="call_footnote_Temp_325"><sup><small>5</small></sup></a></p>
+    <p>The following procedure, <tt>make-withdraw</tt>, creates “withdrawal processors.” The formal parameter <tt>balance</tt> in <tt>make-withdraw</tt> specifies the initial amount of money in the account.<a href="#footnote_Temp_325" name="call_footnote_Temp_325" id="call_footnote_Temp_325"><sup><small>5</small></sup></a></p>
 
     <p><tt><a name="%_idx_2894"></a>(define&nbsp;(make-withdraw&nbsp;balance)<br />
     &nbsp;&nbsp;(lambda&nbsp;(amount)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(&gt;=&nbsp;balance&nbsp;amount)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(begin&nbsp;(set!&nbsp;balance&nbsp;(-&nbsp;balance&nbsp;amount))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;balance)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Insufficient&nbsp;funds")))<br /></tt></p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Insufficient&nbsp;funds”)))<br /></tt></p>
 
     <p><tt>Make-withdraw</tt> can be used as follows to create two objects <tt>W1</tt> and <tt>W2</tt>:</p>
 
@@ -104,42 +104,42 @@
     (W2&nbsp;70)<br />
     <i>30</i><br />
     (W2&nbsp;40)<br />
-    <i>"Insufficient&nbsp;funds"</i><br />
+    <i>“Insufficient&nbsp;funds”</i><br />
     (W1&nbsp;40)<br />
     <i>10</i><br /></tt></p>
 
     <p>Observe that <tt>W1</tt> and <tt>W2</tt> are completely independent objects, each with its own local state variable <tt>balance</tt>. Withdrawals from one do not affect the other.</p>
 
-    <p>We can also create objects that handle deposits as well as withdrawals, and thus we can represent simple bank accounts. Here is a procedure that returns a ``bank-account object'' with a specified initial balance:</p>
+    <p>We can also create objects that handle deposits as well as withdrawals, and thus we can represent simple bank accounts. Here is a procedure that returns a “bank-account object” with a specified initial balance:</p>
 
     <p><tt><a name="%_idx_2896"></a><a name="%_idx_2898"></a>(define&nbsp;(make-account&nbsp;balance)<br />
     &nbsp;&nbsp;(define&nbsp;(withdraw&nbsp;amount)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(&gt;=&nbsp;balance&nbsp;amount)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(begin&nbsp;(set!&nbsp;balance&nbsp;(-&nbsp;balance&nbsp;amount))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;balance)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Insufficient&nbsp;funds"))<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Insufficient&nbsp;funds”))<br />
     &nbsp;&nbsp;(define&nbsp;(deposit&nbsp;amount)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;(set!&nbsp;balance&nbsp;(+&nbsp;balance&nbsp;amount))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;balance)<br />
     &nbsp;&nbsp;(define&nbsp;(dispatch&nbsp;m)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;(cond&nbsp;((eq?&nbsp;m&nbsp;'withdraw)&nbsp;withdraw)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((eq?&nbsp;m&nbsp;'deposit)&nbsp;deposit)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(else&nbsp;(error&nbsp;"Unknown&nbsp;request&nbsp;--&nbsp;MAKE-ACCOUNT"<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;(cond&nbsp;((eq?&nbsp;m&nbsp;’withdraw)&nbsp;withdraw)<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((eq?&nbsp;m&nbsp;’deposit)&nbsp;deposit)<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(else&nbsp;(error&nbsp;“Unknown&nbsp;request&nbsp;—&nbsp;MAKE-ACCOUNT”<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m))))<br />
     &nbsp;&nbsp;dispatch)<br /></tt></p>
 
-    <p>Each call to <tt>make-account</tt> sets up an environment with a local state variable <tt>balance</tt>. Within this environment, <tt>make-account</tt> defines procedures <tt>deposit</tt> and <tt>withdraw</tt> that access <tt>balance</tt> and an additional procedure <tt>dispatch</tt> that takes a ``message'' as input and returns one of the two local procedures. The <tt>dispatch</tt> procedure itself is returned as the value that represents the bank-account object. This is precisely the <a name="%_idx_2900"></a><em>message-passing</em> style of programming that we saw in section&nbsp;<a href="book-Z-H-17.html#%_sec_2.4.3">2.4.3</a>, although here we are using it in conjunction with the ability to modify local variables.</p>
+    <p>Each call to <tt>make-account</tt> sets up an environment with a local state variable <tt>balance</tt>. Within this environment, <tt>make-account</tt> defines procedures <tt>deposit</tt> and <tt>withdraw</tt> that access <tt>balance</tt> and an additional procedure <tt>dispatch</tt> that takes a “message” as input and returns one of the two local procedures. The <tt>dispatch</tt> procedure itself is returned as the value that represents the bank-account object. This is precisely the <a name="%_idx_2900"></a><em>message-passing</em> style of programming that we saw in section&nbsp;<a href="book-Z-H-17.html#%_sec_2.4.3">2.4.3</a>, although here we are using it in conjunction with the ability to modify local variables.</p>
 
     <p><tt>Make-account</tt> can be used as follows:</p>
 
     <p><tt>(define&nbsp;acc&nbsp;(make-account&nbsp;100))<br />
-    ((acc&nbsp;'withdraw)&nbsp;50)<br />
+    ((acc&nbsp;’withdraw)&nbsp;50)<br />
     <i>50</i><br />
-    ((acc&nbsp;'withdraw)&nbsp;60)<br />
-    <i>"Insufficient&nbsp;funds"</i><br />
-    ((acc&nbsp;'deposit)&nbsp;40)<br />
+    ((acc&nbsp;’withdraw)&nbsp;60)<br />
+    <i>“Insufficient&nbsp;funds”</i><br />
+    ((acc&nbsp;’deposit)&nbsp;40)<br />
     <i>90</i><br />
-    ((acc&nbsp;'withdraw)&nbsp;60)<br />
+    ((acc&nbsp;’withdraw)&nbsp;60)<br />
     <i>30</i><br /></tt></p>
 
     <p>Each call to <tt>acc</tt> returns the locally defined <tt>deposit</tt> or <tt>withdraw</tt> procedure, which is then applied to the specified <tt>amount</tt>. As was the case with <tt>make-withdraw</tt>, another call to <tt>make-account</tt></p>
@@ -163,20 +163,20 @@
     (s&nbsp;100)<br />
     <i>10</i><br />
     <br />
-    (s&nbsp;'how-many-calls?)<br />
+    (s&nbsp;’how-many-calls?)<br />
     <i>1</i><br /></tt></p>
 
     <p><a name="%_thm_3.3"></a> <b>Exercise 3.3.</b>&nbsp;&nbsp;<a name="%_idx_2912"></a><a name="%_idx_2914"></a>Modify the <tt>make-account</tt> procedure so that it creates password-protected accounts. That is, <tt>make-account</tt> should take a symbol as an additional argument, as in</p>
 
-    <p><tt>(define&nbsp;acc&nbsp;(make-account&nbsp;100&nbsp;'secret-password))<br /></tt></p>
+    <p><tt>(define&nbsp;acc&nbsp;(make-account&nbsp;100&nbsp;’secret-password))<br /></tt></p>
 
     <p>The resulting account object should process a request only if it is accompanied by the password with which the account was created, and should otherwise return a complaint:</p>
 
-    <p><tt>((acc&nbsp;'secret-password&nbsp;'withdraw)&nbsp;40)<br />
+    <p><tt>((acc&nbsp;’secret-password&nbsp;’withdraw)&nbsp;40)<br />
     <i>60</i><br />
     <br />
-    ((acc&nbsp;'some-other-password&nbsp;'deposit)&nbsp;50)<br />
-    <i>"Incorrect&nbsp;password"</i><br /></tt></p>
+    ((acc&nbsp;’some-other-password&nbsp;’deposit)&nbsp;50)<br />
+    <i>“Incorrect&nbsp;password”</i><br /></tt></p>
 
     <p><a name="%_thm_3.4"></a> <b>Exercise 3.4.</b>&nbsp;&nbsp;Modify the <tt>make-account</tt> procedure of exercise&nbsp;<a href="#%_thm_3.3">3.3</a> by adding another local state variable so that, if an account is accessed more than seven consecutive times with an incorrect password, it invokes the procedure <tt>call-the-cops</tt>.</p>
 
@@ -186,12 +186,12 @@
 
     <p><a name="%_idx_2916"></a> <a name="%_idx_2918"></a><a name="%_idx_2920"></a>As we shall see, introducing assignment into our programming language leads us into a thicket of difficult conceptual issues. Nevertheless, viewing systems as collections of objects with local state is a powerful technique for maintaining a modular design. As a simple example, consider the design of a procedure <tt>rand</tt> that, whenever it is called, returns an integer chosen at random.</p>
 
-    <p><a name="%_idx_2922"></a>It is not at all clear what is meant by ``chosen at random.'' What we presumably want is for successive calls to <tt>rand</tt> to produce a sequence of numbers that has statistical properties of uniform distribution. We will not discuss methods for generating suitable sequences here. Rather, let us assume that we have a procedure <tt>rand-update</tt> that has the property that if we start with a given number <em>x</em><sub>1</sub> and form</p>
+    <p><a name="%_idx_2922"></a>It is not at all clear what is meant by “chosen at random.” What we presumably want is for successive calls to <tt>rand</tt> to produce a sequence of numbers that has statistical properties of uniform distribution. We will not discuss methods for generating suitable sequences here. Rather, let us assume that we have a procedure <tt>rand-update</tt> that has the property that if we start with a given number <em>x</em><sub>1</sub> and form</p>
 
     <p><tt><em>x</em><sub>2</sub>&nbsp;=&nbsp;(rand-update&nbsp;<em>x</em><sub>1</sub>)<br />
     <em>x</em><sub>3</sub>&nbsp;=&nbsp;(rand-update&nbsp;<em>x</em><sub>2</sub>)<br /></tt></p>
 
-    <p>then the sequence of values <em>x</em><sub>1</sub>, <em>x</em><sub>2</sub>, <em>x</em><sub>3</sub>, <tt>...</tt>, will have the desired statistical properties.<a href="#footnote_Temp_330" name="call_footnote_Temp_330" id="call_footnote_Temp_330"><sup><small>6</small></sup></a></p>
+    <p>then the sequence of values <em>x</em><sub>1</sub>, <em>x</em><sub>2</sub>, <em>x</em><sub>3</sub>, <tt>…</tt>, will have the desired statistical properties.<a href="#footnote_Temp_330" name="call_footnote_Temp_330" id="call_footnote_Temp_330"><sup><small>6</small></sup></a></p>
 
     <p>We can implement <tt>rand</tt> as a procedure with a local state variable <tt>x</tt> that is initialized to some fixed value <tt>random-init</tt>. Each call to <tt>rand</tt> computes <tt>rand-update</tt> of the current value of <tt>x</tt>, returns this as the random number, and also stores this as the new value of <tt>x</tt>.</p>
 
@@ -241,13 +241,13 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x2))))))<br />
     &nbsp;&nbsp;(iter&nbsp;trials&nbsp;0&nbsp;initial-x))<br /></tt></p>
 
-    <p>While the program is still simple, it betrays some painful breaches of modularity. In our first version of the program, using <tt>rand</tt>, we can express the Monte Carlo method directly as a general <tt>monte-carlo</tt> procedure that takes as an argument an arbitrary <tt>experiment</tt> procedure. In our second version of the program, with no local state for the random-number generator, <tt>random-gcd-test</tt> must explicitly manipulate the random numbers <tt>x1</tt> and <tt>x2</tt> and recycle <tt>x2</tt> through the iterative loop as the new input to <tt>rand-update</tt>. This explicit handling of the random numbers intertwines the structure of accumulating test results with the fact that our particular experiment uses two random numbers, whereas other Monte Carlo experiments might use one random number or three. Even the top-level procedure <tt>estimate-pi</tt> has to be concerned with supplying an initial random number. The fact that the random-number generator's insides are leaking out into other parts of the program makes it difficult for us to isolate the Monte Carlo idea so that it can be applied to other tasks. In the first version of the program, assignment encapsulates the state of the random-number generator within the <tt>rand</tt> procedure, so that the details of random-number generation remain independent of the rest of the program.</p>
+    <p>While the program is still simple, it betrays some painful breaches of modularity. In our first version of the program, using <tt>rand</tt>, we can express the Monte Carlo method directly as a general <tt>monte-carlo</tt> procedure that takes as an argument an arbitrary <tt>experiment</tt> procedure. In our second version of the program, with no local state for the random-number generator, <tt>random-gcd-test</tt> must explicitly manipulate the random numbers <tt>x1</tt> and <tt>x2</tt> and recycle <tt>x2</tt> through the iterative loop as the new input to <tt>rand-update</tt>. This explicit handling of the random numbers intertwines the structure of accumulating test results with the fact that our particular experiment uses two random numbers, whereas other Monte Carlo experiments might use one random number or three. Even the top-level procedure <tt>estimate-pi</tt> has to be concerned with supplying an initial random number. The fact that the random-number generator’s insides are leaking out into other parts of the program makes it difficult for us to isolate the Monte Carlo idea so that it can be applied to other tasks. In the first version of the program, assignment encapsulates the state of the random-number generator within the <tt>rand</tt> procedure, so that the details of random-number generation remain independent of the rest of the program.</p>
 
     <p>The general phenomenon illustrated by the Monte Carlo example is this: From the point of view of one part of a complex process, the other parts appear to change with time. They have hidden time-varying local state. If we wish to write computer programs whose structure reflects this decomposition, we make computational objects (such as bank accounts and random-number generators) whose behavior changes with time. We model state with local state variables, and we model the changes of state with assignments to those variables.</p>
 
     <p>It is tempting to conclude this discussion by saying that, by introducing assignment and the technique of hiding state in local variables, we are able to structure systems in a more modular fashion than if all state had to be manipulated explicitly, by passing additional parameters. Unfortunately, as we shall see, the story is not so simple.</p>
 
-    <p><a name="%_thm_3.5"></a> <b>Exercise 3.5.</b>&nbsp;&nbsp;<a name="%_idx_2956"></a><a name="%_idx_2958"></a><a name="%_idx_2960"></a><em>Monte Carlo integration</em> is a method of estimating definite integrals by means of Monte Carlo simulation. Consider computing the area of a region of space described by a predicate <em>P</em>(<em>x</em>, <em>y</em>) that is true for points (<em>x</em>, <em>y</em>) in the region and false for points not in the region. For example, the region contained within a circle of radius 3 centered at (5, 7) is described by the predicate that tests whether (<em>x</em> - 5)<sup>2</sup> + (<em>y</em> - 7)<sup>2</sup><u>&lt;</u> 3<sup>2</sup>. To estimate the area of the region described by such a predicate, begin by choosing a rectangle that contains the region. For example, a rectangle with diagonally opposite corners at (2, 4) and (8, 10) contains the circle above. The desired integral is the area of that portion of the rectangle that lies in the region. We can estimate the integral by picking, at random, points (<em>x</em>,<em>y</em>) that lie in the rectangle, and testing <em>P</em>(<em>x</em>, <em>y</em>) for each point to determine whether the point lies in the region. If we try this with many points, then the fraction of points that fall in the region should give an estimate of the proportion of the rectangle that lies in the region. Hence, multiplying this fraction by the area of the entire rectangle should produce an estimate of the integral.</p>
+    <p><a name="%_thm_3.5"></a> <b>Exercise 3.5.</b>&nbsp;&nbsp;<a name="%_idx_2956"></a><a name="%_idx_2958"></a><a name="%_idx_2960"></a><em>Monte Carlo integration</em> is a method of estimating definite integrals by means of Monte Carlo simulation. Consider computing the area of a region of space described by a predicate <em>P</em>(<em>x</em>, <em>y</em>) that is true for points (<em>x</em>, <em>y</em>) in the region and false for points not in the region. For example, the region contained within a circle of radius 3 centered at (5, 7) is described by the predicate that tests whether (<em>x</em>—5)<sup>2</sup> + (<em>y</em>—7)<sup>2</sup><u>&lt;</u> 3<sup>2</sup>. To estimate the area of the region described by such a predicate, begin by choosing a rectangle that contains the region. For example, a rectangle with diagonally opposite corners at (2, 4) and (8, 10) contains the circle above. The desired integral is the area of that portion of the rectangle that lies in the region. We can estimate the integral by picking, at random, points (<em>x</em>,<em>y</em>) that lie in the rectangle, and testing <em>P</em>(<em>x</em>, <em>y</em>) for each point to determine whether the point lies in the region. If we try this with many points, then the fraction of points that fall in the region should give an estimate of the proportion of the rectangle that lies in the region. Hence, multiplying this fraction by the area of the entire rectangle should produce an estimate of the integral.</p>
 
     <p>Implement Monte Carlo integration as a procedure <a name="%_idx_2962"></a><tt>estimate-integral</tt> that takes as arguments a predicate <tt>P</tt>, upper and lower bounds <tt>x1</tt>, <tt>x2</tt>, <tt>y1</tt>, and <tt>y2</tt> for the rectangle, and the number of trials to perform in order to produce the estimate. Your procedure should use the same <tt>monte-carlo</tt> procedure that was used above to estimate <img src="book-Z-G-D-9.gif" border="0" />. Use your <tt>estimate-integral</tt> to produce an estimate of <img src="book-Z-G-D-9.gif" border="0" /> by measuring the area of a unit circle.</p>
 
@@ -257,13 +257,13 @@
     &nbsp;&nbsp;(let&nbsp;((range&nbsp;(-&nbsp;high&nbsp;low)))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;(+&nbsp;low&nbsp;(random&nbsp;range))))<br /></tt></p>
 
-    <p><a name="%_thm_3.6"></a> <b>Exercise 3.6.</b>&nbsp;&nbsp;<a name="%_idx_2972"></a><a name="%_idx_2974"></a>It is useful to be able to reset a random-number generator to produce a sequence starting from a given value. Design a new <tt>rand</tt> procedure that is called with an argument that is either the symbol <tt>generate</tt> or the symbol <tt>reset</tt> and behaves as follows: <tt>(rand 'generate)</tt> produces a new random number; <tt>((rand 'reset) &lt;<em>new-value</em>&gt;)</tt> resets the internal state variable to the designated &lt;<em>new-value</em>&gt;. Thus, by resetting the state, one can generate repeatable sequences. These are very handy to have when testing and debugging programs that use random numbers.</p>
+    <p><a name="%_thm_3.6"></a> <b>Exercise 3.6.</b>&nbsp;&nbsp;<a name="%_idx_2972"></a><a name="%_idx_2974"></a>It is useful to be able to reset a random-number generator to produce a sequence starting from a given value. Design a new <tt>rand</tt> procedure that is called with an argument that is either the symbol <tt>generate</tt> or the symbol <tt>reset</tt> and behaves as follows: <tt>(rand ‘generate)</tt> produces a new random number; <tt>((rand ‘reset) &lt;<em>new-value</em>&gt;)</tt> resets the internal state variable to the designated &lt;<em>new-value</em>&gt;. Thus, by resetting the state, one can generate repeatable sequences. These are very handy to have when testing and debugging programs that use random numbers.</p>
 
     <p><a name="%_sec_3.1.3"></a></p>
 
     <h3><a href="book-Z-H-4.html#%_toc_%_sec_3.1.3">3.1.3&nbsp;&nbsp;The Costs of Introducing Assignment</a></h3>
 
-    <p><a name="%_idx_2976"></a> As we have seen, the <tt>set!</tt> operation enables us to model objects that have local state. However, this advantage comes at a price. Our programming language can no longer be interpreted in terms of the substitution model of procedure application that we introduced in section&nbsp;<a href="book-Z-H-10.html#%_sec_1.1.5">1.1.5</a>. Moreover, no simple model with ``nice'' mathematical properties can be an adequate framework for dealing with objects and assignment in programming languages.</p>
+    <p><a name="%_idx_2976"></a> As we have seen, the <tt>set!</tt> operation enables us to model objects that have local state. However, this advantage comes at a price. Our programming language can no longer be interpreted in terms of the substitution model of procedure application that we introduced in section&nbsp;<a href="book-Z-H-10.html#%_sec_1.1.5">1.1.5</a>. Moreover, no simple model with “nice” mathematical properties can be an adequate framework for dealing with objects and assignment in programming languages.</p>
 
     <p>So long as we do not use assignments, two evaluations of the same procedure with the same arguments will produce the same result, so that procedures can be viewed as computing mathematical functions. Programming without any use of assignments, as we did throughout the first two chapters of this book, is accordingly known as <a name="%_idx_2978"></a><em>functional programming</em>.</p>
 
@@ -321,20 +321,20 @@
 
     <p>If we adhered to the substitution model, we would have to say that the meaning of the procedure application is to first set <tt>balance</tt> to 5 and then return 25 as the value of the expression. This gets the wrong answer. In order to get the correct answer, we would have to somehow distinguish the first occurrence of <tt>balance</tt> (before the effect of the <tt>set!</tt>) from the second occurrence of <tt>balance</tt> (after the effect of the <tt>set!</tt>), and the substitution model cannot do this.</p>
 
-    <p>The trouble here is that substitution is based ultimately on the notion that the symbols in our language are essentially names for values. But as soon as we introduce <tt>set!</tt> and the idea that the value of a variable can change, a variable can no longer be simply a name. Now a variable somehow refers to a place where a value can be stored, and the value stored at this place can change. In section&nbsp;<a href="book-Z-H-21.html#%_sec_3.2">3.2</a> we will see how environments play this role of ``place'' in our computational model.</p>
+    <p>The trouble here is that substitution is based ultimately on the notion that the symbols in our language are essentially names for values. But as soon as we introduce <tt>set!</tt> and the idea that the value of a variable can change, a variable can no longer be simply a name. Now a variable somehow refers to a place where a value can be stored, and the value stored at this place can change. In section&nbsp;<a href="book-Z-H-21.html#%_sec_3.2">3.2</a> we will see how environments play this role of “place” in our computational model.</p>
 
     <p><a name="%_sec_Temp_336"></a></p>
 
     <h4><a href="book-Z-H-4.html#%_toc_%_sec_Temp_336">Sameness and change</a></h4>
 
-    <p><a name="%_idx_2986"></a><a name="%_idx_2988"></a> The issue surfacing here is more profound than the mere breakdown of a particular model of computation. As soon as we introduce change into our computational models, many notions that were previously straightforward become problematical. Consider the concept of two things being ``the same.''</p>
+    <p><a name="%_idx_2986"></a><a name="%_idx_2988"></a> The issue surfacing here is more profound than the mere breakdown of a particular model of computation. As soon as we introduce change into our computational models, many notions that were previously straightforward become problematical. Consider the concept of two things being “the same.”</p>
 
     <p>Suppose we call <tt>make-decrementer</tt> twice with the same argument to create two procedures:</p>
 
     <p><tt>(define&nbsp;D1&nbsp;(make-decrementer&nbsp;25))<br />
     (define&nbsp;D2&nbsp;(make-decrementer&nbsp;25))<br /></tt></p>
 
-    <p>Are <tt>D1</tt> and <tt>D2</tt> the same? An acceptable answer is yes, because <tt>D1</tt> and <tt>D2</tt> have the same computational behavior -- each is a procedure that subtracts its input from 25. In fact, <tt>D1</tt> could be substituted for <tt>D2</tt> in any computation without changing the result.</p>
+    <p>Are <tt>D1</tt> and <tt>D2</tt> the same? An acceptable answer is yes, because <tt>D1</tt> and <tt>D2</tt> have the same computational behavior—each is a procedure that subtracts its input from 25. In fact, <tt>D1</tt> could be substituted for <tt>D2</tt> in any computation without changing the result.</p>
 
     <p>Contrast this with making two calls to <tt>make-simplified-withdraw</tt>:</p>
 
@@ -350,11 +350,11 @@
     (W2&nbsp;20)<br />
     <i>5</i><br /></tt></p>
 
-    <p>Even though <tt>W1</tt> and <tt>W2</tt> are ``equal'' in the sense that they are both created by evaluating the same expression, <tt>(make-simplified-withdraw&nbsp;25)</tt>, it is not true that <tt>W1</tt> could be substituted for <tt>W2</tt> in any expression without changing the result of evaluating the expression.</p>
+    <p>Even though <tt>W1</tt> and <tt>W2</tt> are “equal” in the sense that they are both created by evaluating the same expression, <tt>(make-simplified-withdraw&nbsp;25)</tt>, it is not true that <tt>W1</tt> could be substituted for <tt>W2</tt> in any expression without changing the result of evaluating the expression.</p>
 
-    <p>A language that supports the concept that ``equals can be substituted for equals'' in an expresssion without changing the value of the expression is said to be <a name="%_idx_2990"></a><a name="%_idx_2992"></a><a name="%_idx_2994"></a><em>referentially transparent</em>. Referential transparency is violated when we include <tt>set!</tt> in our computer language. This makes it tricky to determine when we can simplify expressions by substituting equivalent expressions. Consequently, reasoning about programs that use assignment becomes drastically more difficult.</p>
+    <p>A language that supports the concept that “equals can be substituted for equals” in an expresssion without changing the value of the expression is said to be <a name="%_idx_2990"></a><a name="%_idx_2992"></a><a name="%_idx_2994"></a><em>referentially transparent</em>. Referential transparency is violated when we include <tt>set!</tt> in our computer language. This makes it tricky to determine when we can simplify expressions by substituting equivalent expressions. Consequently, reasoning about programs that use assignment becomes drastically more difficult.</p>
 
-    <p>Once we forgo referential transparency, the notion of what it means for computational objects to be ``the same'' becomes difficult to capture in a formal way. Indeed, the meaning of ``same'' in the real world that our programs model is hardly clear in itself. In general, we can determine that two apparently identical objects are indeed ``the same one'' only by modifying one object and then observing whether the other object has changed in the same way. But how can we tell if an object has ``changed'' other than by observing the ``same'' object twice and seeing whether some property of the object differs from one observation to the next? Thus, we cannot determine ``change'' without some <em>a priori</em> notion of ``sameness,'' and we cannot determine sameness without observing the effects of change.</p>
+    <p>Once we forgo referential transparency, the notion of what it means for computational objects to be “the same” becomes difficult to capture in a formal way. Indeed, the meaning of “same” in the real world that our programs model is hardly clear in itself. In general, we can determine that two apparently identical objects are indeed “the same one” only by modifying one object and then observing whether the other object has changed in the same way. But how can we tell if an object has “changed” other than by observing the “same” object twice and seeing whether some property of the object differs from one observation to the next? Thus, we cannot determine “change” without some <em>a priori</em> notion of “sameness,” and we cannot determine sameness without observing the effects of change.</p>
 
     <p><a name="%_idx_2996"></a>As an example of how this issue arises in programming, consider the situation where Peter and Paul have a bank account with $100 in it. There is a substantial difference between modeling this as</p>
 
@@ -366,9 +366,9 @@
     <p><tt>(define&nbsp;peter-acc&nbsp;(make-account&nbsp;100))<br />
     (define&nbsp;paul-acc&nbsp;peter-acc)<br /></tt></p>
 
-    <p>In the first situation, the two bank accounts are distinct. Transactions made by Peter will not affect Paul's account, and vice versa. In the second situation, however, we have defined <tt>paul-acc</tt> to be <em>the same thing</em> as <tt>peter-acc</tt>. In effect, Peter and Paul now have a joint bank account, and if Peter makes a withdrawal from <tt>peter-acc</tt> Paul will observe less money in <tt>paul-acc</tt>. These two similar but distinct situations can cause confusion in building computational models. With the shared account, in particular, it can be especially confusing that there is one object (the bank account) that has two different names (<tt>peter-acc</tt> and <tt>paul-acc</tt>); if we are searching for all the places in our program where <tt>paul-acc</tt> can be changed, we must remember to look also at things that change <tt>peter-acc</tt>.<a href="#footnote_Temp_337" name="call_footnote_Temp_337" id="call_footnote_Temp_337"><sup><small>10</small></sup></a></p>
+    <p>In the first situation, the two bank accounts are distinct. Transactions made by Peter will not affect Paul’s account, and vice versa. In the second situation, however, we have defined <tt>paul-acc</tt> to be <em>the same thing</em> as <tt>peter-acc</tt>. In effect, Peter and Paul now have a joint bank account, and if Peter makes a withdrawal from <tt>peter-acc</tt> Paul will observe less money in <tt>paul-acc</tt>. These two similar but distinct situations can cause confusion in building computational models. With the shared account, in particular, it can be especially confusing that there is one object (the bank account) that has two different names (<tt>peter-acc</tt> and <tt>paul-acc</tt>); if we are searching for all the places in our program where <tt>paul-acc</tt> can be changed, we must remember to look also at things that change <tt>peter-acc</tt>.<a href="#footnote_Temp_337" name="call_footnote_Temp_337" id="call_footnote_Temp_337"><sup><small>10</small></sup></a></p>
 
-    <p>With reference to the above remarks on ``sameness'' and ``change,'' observe that if Peter and Paul could only examine their bank balances, and could not perform operations that changed the balance, then the issue of whether the two accounts are distinct would be moot. In general, so long as we never modify data objects, we can regard a compound data object to be precisely the totality of its pieces. For example, a rational number is determined by giving its numerator and its denominator. But this view is no longer valid in the presence of change, where a compound data object has an ``identity'' that is something different from the pieces of which it is composed. A bank account is still ``the same'' bank account even if we change the balance by making a withdrawal; conversely, we could have two different bank accounts with the same state information. This complication is a consequence, not of our programming language, but of our perception of a bank account as an object. We do not, for example, ordinarily regard a rational number as a changeable object with identity, such that we could change the numerator and still have ``the same'' rational number. <a name="%_sec_Temp_338"></a></p>
+    <p>With reference to the above remarks on “sameness” and “change,” observe that if Peter and Paul could only examine their bank balances, and could not perform operations that changed the balance, then the issue of whether the two accounts are distinct would be moot. In general, so long as we never modify data objects, we can regard a compound data object to be precisely the totality of its pieces. For example, a rational number is determined by giving its numerator and its denominator. But this view is no longer valid in the presence of change, where a compound data object has an “identity” that is something different from the pieces of which it is composed. A bank account is still “the same” bank account even if we change the balance by making a withdrawal; conversely, we could have two different bank accounts with the same state information. This complication is a consequence, not of our programming language, but of our perception of a bank account as an object. We do not, for example, ordinarily regard a rational number as a changeable object with identity, such that we could change the numerator and still have “the same” rational number. <a name="%_sec_Temp_338"></a></p>
 
     <h4><a href="book-Z-H-4.html#%_toc_%_sec_Temp_338">Pitfalls of imperative programming</a></h4>
 
@@ -405,7 +405,7 @@
     <p><a name="%_thm_3.7"></a> <b>Exercise 3.7.</b>&nbsp;&nbsp;<a name="%_idx_3026"></a>Consider the bank account objects created by <tt>make-account</tt>, with the password modification described in exercise&nbsp;<a href="#%_thm_3.3">3.3</a>. Suppose that our banking system requires the ability to make joint accounts. Define a procedure <a name="%_idx_3028"></a><tt>make-joint</tt> that accomplishes this. <tt>Make-joint</tt> should take three arguments. The first is a password-protected account. The second argument must match the password with which the account was defined in order for the <tt>make-joint</tt> operation to proceed. The third argument is a new password. <tt>Make-joint</tt> is to create an additional access to the original account using the new password. For example, if <tt>peter-acc</tt> is a bank account with password <tt>open-sesame</tt>, then</p>
 
     <p><tt>(define&nbsp;paul-acc<br />
-    &nbsp;&nbsp;(make-joint&nbsp;peter-acc&nbsp;'open-sesame&nbsp;'rosebud))<br /></tt></p>
+    &nbsp;&nbsp;(make-joint&nbsp;peter-acc&nbsp;’open-sesame&nbsp;’rosebud))<br /></tt></p>
 
     <p>will allow one to make transactions on <tt>peter-acc</tt> using the name <tt>paul-acc</tt> and the password <tt>rosebud</tt>. You may wish to modify your solution to exercise&nbsp;<a href="#%_thm_3.3">3.3</a> to accommodate this new feature.</p>
 
@@ -424,21 +424,21 @@
 
         <p><a href="#call_footnote_Temp_323" name="footnote_Temp_323" id="footnote_Temp_323"><sup><small>3</small></sup></a> We have already used <a name="%_idx_2878"></a><tt>begin</tt> implicitly in our programs, because in Scheme the body of a procedure can be a sequence of expressions. Also, the &lt;<em>consequent</em>&gt; part of each clause in a <a name="%_idx_2880"></a><a name="%_idx_2882"></a><tt>cond</tt> expression can be a sequence of expressions rather than a single expression.</p>
 
-        <p><a href="#call_footnote_Temp_324" name="footnote_Temp_324" id="footnote_Temp_324"><sup><small>4</small></sup></a> In programming-language jargon, the variable <tt>balance</tt> is said to be <a name="%_idx_2886"></a><a name="%_idx_2888"></a><em>encapsulated</em> within the <tt>new-withdraw</tt> procedure. Encapsulation reflects the general system-design principle known as the <a name="%_idx_2890"></a><a name="%_idx_2892"></a><em>hiding principle</em>: One can make a system more modular and robust by protecting parts of the system from each other; that is, by providing information access only to those parts of the system that have a ``need to know.''</p>
+        <p><a href="#call_footnote_Temp_324" name="footnote_Temp_324" id="footnote_Temp_324"><sup><small>4</small></sup></a> In programming-language jargon, the variable <tt>balance</tt> is said to be <a name="%_idx_2886"></a><a name="%_idx_2888"></a><em>encapsulated</em> within the <tt>new-withdraw</tt> procedure. Encapsulation reflects the general system-design principle known as the <a name="%_idx_2890"></a><a name="%_idx_2892"></a><em>hiding principle</em>: One can make a system more modular and robust by protecting parts of the system from each other; that is, by providing information access only to those parts of the system that have a “need to know.”</p>
 
         <p><a href="#call_footnote_Temp_325" name="footnote_Temp_325" id="footnote_Temp_325"><sup><small>5</small></sup></a> In contrast with <tt>new-withdraw</tt> above, we do not have to use <tt>let</tt> to make <tt>balance</tt> a local variable, since formal parameters are already local. This will be clearer after the discussion of the environment model of evaluation in section&nbsp;<a href="book-Z-H-21.html#%_sec_3.2">3.2</a>. (See also exercise&nbsp;<a href="book-Z-H-21.html#%_thm_3.10">3.10</a>.)</p>
 
-        <p><a href="#call_footnote_Temp_330" name="footnote_Temp_330" id="footnote_Temp_330"><sup><small>6</small></sup></a> One common way to implement <tt>rand-update</tt> is to use the rule that <em>x</em> is updated to <em>a</em><em>x</em> + <em>b</em> modulo <em>m</em>, where <em>a</em>, <em>b</em>, and <em>m</em> are appropriately chosen integers. Chapter&nbsp;3 of <a name="%_idx_2924"></a>Knuth 1981 includes an extensive discussion of techniques for generating sequences of random numbers and establishing their statistical properties. Notice that the <tt>rand-update</tt> procedure computes a mathematical function: Given the same input twice, it produces the same output. Therefore, the number sequence produced by <tt>rand-update</tt> certainly is not ``random,'' if by ``random'' we insist that each number in the sequence is unrelated to the preceding number. The relation between ``real randomness'' and so-called <a name="%_idx_2926"></a><em>pseudo-random</em> sequences, which are produced by well-determined computations and yet have suitable statistical properties, is a complex question involving difficult issues in mathematics and philosophy. <a name="%_idx_2928"></a><a name="%_idx_2930"></a><a name="%_idx_2932"></a>Kolmogorov, Solomonoff, and Chaitin have made great progress in clarifying these issues; a discussion can be found in Chaitin 1975.</p>
+        <p><a href="#call_footnote_Temp_330" name="footnote_Temp_330" id="footnote_Temp_330"><sup><small>6</small></sup></a> One common way to implement <tt>rand-update</tt> is to use the rule that <em>x</em> is updated to <em>a</em><em>x</em> + <em>b</em> modulo <em>m</em>, where <em>a</em>, <em>b</em>, and <em>m</em> are appropriately chosen integers. Chapter&nbsp;3 of <a name="%_idx_2924"></a>Knuth 1981 includes an extensive discussion of techniques for generating sequences of random numbers and establishing their statistical properties. Notice that the <tt>rand-update</tt> procedure computes a mathematical function: Given the same input twice, it produces the same output. Therefore, the number sequence produced by <tt>rand-update</tt> certainly is not “random,” if by “random” we insist that each number in the sequence is unrelated to the preceding number. The relation between “real randomness” and so-called <a name="%_idx_2926"></a><em>pseudo-random</em> sequences, which are produced by well-determined computations and yet have suitable statistical properties, is a complex question involving difficult issues in mathematics and philosophy. <a name="%_idx_2928"></a><a name="%_idx_2930"></a><a name="%_idx_2932"></a>Kolmogorov, Solomonoff, and Chaitin have made great progress in clarifying these issues; a discussion can be found in Chaitin 1975.</p>
 
         <p><a href="#call_footnote_Temp_331" name="footnote_Temp_331" id="footnote_Temp_331"><sup><small>7</small></sup></a> This theorem is due to E. <a name="%_idx_2942"></a>Cesàro. See section 4.5.2 of <a name="%_idx_2944"></a>Knuth 1981 for a discussion and a proof.</p>
 
         <p><a href="#call_footnote_Temp_333" name="footnote_Temp_333" id="footnote_Temp_333"><sup><small>8</small></sup></a> <a name="%_idx_2964"></a>MIT Scheme provides such a procedure. If <a name="%_idx_2966"></a><a name="%_idx_2968"></a><tt>random</tt> is given an exact integer (as in section&nbsp;<a href="book-Z-H-11.html#%_sec_1.2.6">1.2.6</a>) it returns an exact integer, but if it is given a decimal value (as in this exercise) it returns a decimal value.</p>
 
-        <p><a href="#call_footnote_Temp_335" name="footnote_Temp_335" id="footnote_Temp_335"><sup><small>9</small></sup></a> We don't substitute for the occurrence of <tt>balance</tt> in the <tt>set!</tt> expression because the &lt;<em>name</em>&gt; in a <tt>set!</tt> is not evaluated. If we did substitute for it, we would get <tt>(set!&nbsp;25&nbsp;(-&nbsp;25&nbsp;amount))</tt>, which makes no sense.</p>
+        <p><a href="#call_footnote_Temp_335" name="footnote_Temp_335" id="footnote_Temp_335"><sup><small>9</small></sup></a> We don’t substitute for the occurrence of <tt>balance</tt> in the <tt>set!</tt> expression because the &lt;<em>name</em>&gt; in a <tt>set!</tt> is not evaluated. If we did substitute for it, we would get <tt>(set!&nbsp;25&nbsp;(-&nbsp;25&nbsp;amount))</tt>, which makes no sense.</p>
 
-        <p><a href="#call_footnote_Temp_337" name="footnote_Temp_337" id="footnote_Temp_337"><sup><small>10</small></sup></a> The phenomenon of a single computational object being accessed by more than one name is known as <a name="%_idx_2998"></a><em>aliasing</em>. The joint bank account situation illustrates a very simple example of an alias. In section&nbsp;<a href="book-Z-H-22.html#%_sec_3.3">3.3</a> we will see much more complex examples, such as ``distinct'' compound data structures that share parts. Bugs can occur in our programs if <a name="%_idx_3000"></a><a name="%_idx_3002"></a><a name="%_idx_3004"></a>we forget that a change to an object may also, as a ``side effect,'' change a ``different'' object because the two ``different'' objects are actually a single object appearing under different aliases. These so-called <em>side-effect bugs</em> are so difficult to locate and to analyze that some people have proposed that programming languages be designed in such a way as to not allow side effects or aliasing <a name="%_idx_3006"></a><a name="%_idx_3008"></a><a name="%_idx_3010"></a><a name="%_idx_3012"></a>(Lampson et al. 1981; Morris, Schmidt, and Wadler 1980).</p>
+        <p><a href="#call_footnote_Temp_337" name="footnote_Temp_337" id="footnote_Temp_337"><sup><small>10</small></sup></a> The phenomenon of a single computational object being accessed by more than one name is known as <a name="%_idx_2998"></a><em>aliasing</em>. The joint bank account situation illustrates a very simple example of an alias. In section&nbsp;<a href="book-Z-H-22.html#%_sec_3.3">3.3</a> we will see much more complex examples, such as “distinct” compound data structures that share parts. Bugs can occur in our programs if <a name="%_idx_3000"></a><a name="%_idx_3002"></a><a name="%_idx_3004"></a>we forget that a change to an object may also, as a “side effect,” change a “different” object because the two “different” objects are actually a single object appearing under different aliases. These so-called <em>side-effect bugs</em> are so difficult to locate and to analyze that some people have proposed that programming languages be designed in such a way as to not allow side effects or aliasing <a name="%_idx_3006"></a><a name="%_idx_3008"></a><a name="%_idx_3010"></a><a name="%_idx_3012"></a>(Lampson et al. 1981; Morris, Schmidt, and Wadler 1980).</p>
 
-        <p><a href="#call_footnote_Temp_339" name="footnote_Temp_339" id="footnote_Temp_339"><sup><small>11</small></sup></a> In view of this, it is ironic that introductory programming is most often taught in a highly imperative style. This may be a vestige of a belief, common throughout the 1960s and 1970s, that programs that call procedures must inherently be less efficient than programs that perform assignments. (Steele (1977) <a name="%_idx_3024"></a>debunks this argument.) Alternatively it may reflect a view that step-by-step assignment is easier for beginners to visualize than procedure call. Whatever the reason, it often saddles beginning programmers with ``should I set this variable before or after that one'' concerns that can complicate programming and obscure the important ideas.</p>
+        <p><a href="#call_footnote_Temp_339" name="footnote_Temp_339" id="footnote_Temp_339"><sup><small>11</small></sup></a> In view of this, it is ironic that introductory programming is most often taught in a highly imperative style. This may be a vestige of a belief, common throughout the 1960s and 1970s, that programs that call procedures must inherently be less efficient than programs that perform assignments. (Steele (1977) <a name="%_idx_3024"></a>debunks this argument.) Alternatively it may reflect a view that step-by-step assignment is easier for beginners to visualize than procedure call. Whatever the reason, it often saddles beginning programmers with “should I set this variable before or after that one” concerns that can complicate programming and obscure the important ideas.</p>
     </div>
 </body>
 </html>

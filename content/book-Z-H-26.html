@@ -121,7 +121,7 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(apply&nbsp;(eval&nbsp;(operator&nbsp;exp)&nbsp;env)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(list-of-values&nbsp;(operands&nbsp;exp)&nbsp;env)))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(else<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(error&nbsp;"Unknown&nbsp;expression&nbsp;type&nbsp;--&nbsp;EVAL"&nbsp;exp))))<br /></tt></p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(error&nbsp;“Unknown&nbsp;expression&nbsp;type&nbsp;—&nbsp;EVAL”&nbsp;exp))))<br /></tt></p>
 
     <p><a name="%_idx_4244"></a><a name="%_idx_4246"></a>For clarity, <tt>eval</tt> has been implemented as a case analysis using <tt>cond</tt>. The disadvantage of this is that our procedure handles only a few distinguishable types of expressions, and no new ones can be defined without editing the definition of <tt>eval</tt>. In most Lisp implementations, dispatching on the type of an expression is done in a data-directed style. This allows a user to add new types of expressions that <tt>eval</tt> can distinguish, without modifying the definition of <tt>eval</tt> itself. (See exercise&nbsp;<a href="#%_thm_4.3">4.3</a>.)</p>
 
@@ -143,7 +143,7 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(procedure-environment&nbsp;procedure))))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(else<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(error<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Unknown&nbsp;procedure&nbsp;type&nbsp;--&nbsp;APPLY"&nbsp;procedure))))<br /></tt></p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Unknown&nbsp;procedure&nbsp;type&nbsp;—&nbsp;APPLY”&nbsp;procedure))))<br /></tt></p>
 
     <p><a name="%_sec_Temp_517"></a></p>
 
@@ -153,7 +153,7 @@
 
     <p><tt><a name="%_idx_4256"></a>(define&nbsp;(list-of-values&nbsp;exps&nbsp;env)<br />
     &nbsp;&nbsp;(if&nbsp;(no-operands?&nbsp;exps)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'()<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;’()<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(cons&nbsp;(eval&nbsp;(first-operand&nbsp;exps)&nbsp;env)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(list-of-values&nbsp;(rest-operands&nbsp;exps)&nbsp;env))))<br /></tt></p>
 
@@ -191,7 +191,7 @@
     &nbsp;&nbsp;(set-variable-value!&nbsp;(assignment-variable&nbsp;exp)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(eval&nbsp;(assignment-value&nbsp;exp)&nbsp;env)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;env)<br />
-    &nbsp;&nbsp;'ok)<br /></tt></p>
+    &nbsp;&nbsp;’ok)<br /></tt></p>
 
     <p>Definitions of variables are handled in a similar manner.<a href="#footnote_Temp_523" name="call_footnote_Temp_523" id="call_footnote_Temp_523"><sup><small>7</small></sup></a></p>
 
@@ -199,7 +199,7 @@
     &nbsp;&nbsp;(define-variable!&nbsp;(definition-variable&nbsp;exp)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(eval&nbsp;(definition-value&nbsp;exp)&nbsp;env)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;env)<br />
-    &nbsp;&nbsp;'ok)<br /></tt></p>
+    &nbsp;&nbsp;’ok)<br /></tt></p>
 
     <p>We have chosen here to return the symbol <tt>ok</tt> as the value of an assignment or a definition.<a href="#footnote_Temp_524" name="call_footnote_Temp_524" id="call_footnote_Temp_524"><sup><small>8</small></sup></a></p>
 
@@ -229,7 +229,7 @@
     <p>¤ Quotations have the form <tt>(quote &lt;<em>text-of-quotation</em>&gt;)</tt>:<a href="#footnote_Temp_526" name="call_footnote_Temp_526" id="call_footnote_Temp_526"><sup><small>9</small></sup></a></p>
 
     <p><tt><a name="%_idx_4286"></a>(define&nbsp;(quoted?&nbsp;exp)<br />
-    &nbsp;&nbsp;(tagged-list?&nbsp;exp&nbsp;'quote))<br />
+    &nbsp;&nbsp;(tagged-list?&nbsp;exp&nbsp;’quote))<br />
     <br />
     <a name="%_idx_4288"></a>(define&nbsp;(text-of-quotation&nbsp;exp)&nbsp;(cadr&nbsp;exp))<br /></tt></p>
 
@@ -243,7 +243,7 @@
     <p>¤ Assignments have the form <tt>(set! &lt;<em>var</em>&gt; &lt;<em>value</em>&gt;)</tt>:</p>
 
     <p><tt><a name="%_idx_4292"></a>(define&nbsp;(assignment?&nbsp;exp)<br />
-    &nbsp;&nbsp;(tagged-list?&nbsp;exp&nbsp;'set!))<br />
+    &nbsp;&nbsp;(tagged-list?&nbsp;exp&nbsp;’set!))<br />
     <a name="%_idx_4294"></a>(define&nbsp;(assignment-variable&nbsp;exp)&nbsp;(cadr&nbsp;exp))<br />
     <a name="%_idx_4296"></a>(define&nbsp;(assignment-value&nbsp;exp)&nbsp;(caddr&nbsp;exp))<br /></tt></p>
 
@@ -253,19 +253,19 @@
 
     <p>or the form</p>
 
-    <p><tt>(define&nbsp;(&lt;<em>var</em>&gt;&nbsp;&lt;<em>parameter<sub>1</sub></em>&gt;</tt> ... &lt;<em>parameter<sub><em>n</em></sub></em>&gt;)<br />
+    <p><tt>(define&nbsp;(&lt;<em>var</em>&gt;&nbsp;&lt;<em>parameter<sub>1</sub></em>&gt;</tt>… &lt;<em>parameter<sub><em>n</em></sub></em>&gt;)<br />
     &nbsp;&nbsp;&lt;<em>body</em>&gt;)<br /></p>
 
     <p><a name="%_idx_4298"></a><a name="%_idx_4300"></a>The latter form (standard procedure definition) is syntactic sugar for</p>
 
     <p><tt>(define&nbsp;&lt;<em>var</em>&gt;<br />
-    &nbsp;&nbsp;(lambda&nbsp;(&lt;<em>parameter<sub>1</sub></em>&gt;</tt> ... &lt;<em>parameter<sub><em>n</em></sub></em>&gt;)<br />
+    &nbsp;&nbsp;(lambda&nbsp;(&lt;<em>parameter<sub>1</sub></em>&gt;</tt>… &lt;<em>parameter<sub><em>n</em></sub></em>&gt;)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&lt;<em>body</em>&gt;))<br /></p>
 
     <p>The corresponding syntax procedures are the following:</p>
 
     <p><tt><a name="%_idx_4302"></a>(define&nbsp;(definition?&nbsp;exp)<br />
-    &nbsp;&nbsp;(tagged-list?&nbsp;exp&nbsp;'define))<br />
+    &nbsp;&nbsp;(tagged-list?&nbsp;exp&nbsp;’define))<br />
     <a name="%_idx_4304"></a>(define&nbsp;(definition-variable&nbsp;exp)<br />
     &nbsp;&nbsp;(if&nbsp;(symbol?&nbsp;(cadr&nbsp;exp))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(cadr&nbsp;exp)<br />
@@ -278,33 +278,33 @@
 
     <p>¤ <tt>Lambda</tt> expressions are lists that begin with the symbol <tt>lambda</tt>:</p>
 
-    <p><tt><a name="%_idx_4308"></a>(define&nbsp;(lambda?&nbsp;exp)&nbsp;(tagged-list?&nbsp;exp&nbsp;'lambda))<br />
+    <p><tt><a name="%_idx_4308"></a>(define&nbsp;(lambda?&nbsp;exp)&nbsp;(tagged-list?&nbsp;exp&nbsp;’lambda))<br />
     <a name="%_idx_4310"></a>(define&nbsp;(lambda-parameters&nbsp;exp)&nbsp;(cadr&nbsp;exp))<br />
     <a name="%_idx_4312"></a>(define&nbsp;(lambda-body&nbsp;exp)&nbsp;(cddr&nbsp;exp))<br /></tt></p>
 
     <p>We also provide a constructor for <tt>lambda</tt> expressions, which is used by <tt>definition-value</tt>, above:</p>
 
     <p><tt><a name="%_idx_4314"></a>(define&nbsp;(make-lambda&nbsp;parameters&nbsp;body)<br />
-    &nbsp;&nbsp;(cons&nbsp;'lambda&nbsp;(cons&nbsp;parameters&nbsp;body)))<br /></tt></p>
+    &nbsp;&nbsp;(cons&nbsp;’lambda&nbsp;(cons&nbsp;parameters&nbsp;body)))<br /></tt></p>
 
     <p>¤ Conditionals begin with <tt>if</tt> and have a predicate, a consequent, and an (optional) alternative. If the expression has no alternative part, we provide <tt>false</tt> as the alternative.<a href="#footnote_Temp_527" name="call_footnote_Temp_527" id="call_footnote_Temp_527"><sup><small>10</small></sup></a></p>
 
-    <p><tt><a name="%_idx_4316"></a>(define&nbsp;(if?&nbsp;exp)&nbsp;(tagged-list?&nbsp;exp&nbsp;'if))<br />
+    <p><tt><a name="%_idx_4316"></a>(define&nbsp;(if?&nbsp;exp)&nbsp;(tagged-list?&nbsp;exp&nbsp;’if))<br />
     <a name="%_idx_4318"></a>(define&nbsp;(if-predicate&nbsp;exp)&nbsp;(cadr&nbsp;exp))<br />
     <a name="%_idx_4320"></a>(define&nbsp;(if-consequent&nbsp;exp)&nbsp;(caddr&nbsp;exp))<br />
     <a name="%_idx_4322"></a>(define&nbsp;(if-alternative&nbsp;exp)<br />
     &nbsp;&nbsp;(if&nbsp;(not&nbsp;(null?&nbsp;(cdddr&nbsp;exp)))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(cadddr&nbsp;exp)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'false))<br /></tt></p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;’false))<br /></tt></p>
 
     <p>We also provide a constructor for <tt>if</tt> expressions, to be used by <tt>cond-&gt;if</tt> to transform <tt>cond</tt> expressions into <tt>if</tt> expressions:</p>
 
     <p><tt><a name="%_idx_4324"></a>(define&nbsp;(make-if&nbsp;predicate&nbsp;consequent&nbsp;alternative)<br />
-    &nbsp;&nbsp;(list&nbsp;'if&nbsp;predicate&nbsp;consequent&nbsp;alternative))<br /></tt></p>
+    &nbsp;&nbsp;(list&nbsp;’if&nbsp;predicate&nbsp;consequent&nbsp;alternative))<br /></tt></p>
 
     <p>¤ <tt>Begin</tt> packages a sequence of expressions into a single expression. We include syntax operations on <tt>begin</tt> expressions to extract the actual sequence from the <tt>begin</tt> expression, as well as selectors that return the first expression and the rest of the expressions in the sequence.<a href="#footnote_Temp_528" name="call_footnote_Temp_528" id="call_footnote_Temp_528"><sup><small>11</small></sup></a></p>
 
-    <p><tt><a name="%_idx_4326"></a>(define&nbsp;(begin?&nbsp;exp)&nbsp;(tagged-list?&nbsp;exp&nbsp;'begin))<br />
+    <p><tt><a name="%_idx_4326"></a>(define&nbsp;(begin?&nbsp;exp)&nbsp;(tagged-list?&nbsp;exp&nbsp;’begin))<br />
     <a name="%_idx_4328"></a>(define&nbsp;(begin-actions&nbsp;exp)&nbsp;(cdr&nbsp;exp))<br />
     <a name="%_idx_4330"></a>(define&nbsp;(last-exp?&nbsp;seq)&nbsp;(null?&nbsp;(cdr&nbsp;seq)))<br />
     <a name="%_idx_4332"></a>(define&nbsp;(first-exp&nbsp;seq)&nbsp;(car&nbsp;seq))<br />
@@ -316,7 +316,7 @@
     &nbsp;&nbsp;(cond&nbsp;((null?&nbsp;seq)&nbsp;seq)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((last-exp?&nbsp;seq)&nbsp;(first-exp&nbsp;seq))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(else&nbsp;(make-begin&nbsp;seq))))<br />
-    <a name="%_idx_4338"></a>(define&nbsp;(make-begin&nbsp;seq)&nbsp;(cons&nbsp;'begin&nbsp;seq))<br /></tt></p>
+    <a name="%_idx_4338"></a>(define&nbsp;(make-begin&nbsp;seq)&nbsp;(cons&nbsp;’begin&nbsp;seq))<br /></tt></p>
 
     <p>¤ A procedure application is any compound expression that is not one of the above expression types. The <tt>car</tt> of the expression is the operator, and the <tt>cdr</tt> is the list of operands:</p>
 
@@ -334,7 +334,7 @@
     <p><a name="%_idx_4352"></a><a name="%_idx_4354"></a><a name="%_idx_4356"></a><a name="%_idx_4358"></a> Some special forms in our language can be defined in terms of expressions involving other special forms, rather than being implemented directly. One example is <tt>cond</tt>, which can be implemented as a nest of <tt>if</tt> expressions. For example, we can reduce the problem of evaluating the expression</p>
 
     <p><tt>(cond&nbsp;((&gt;&nbsp;x&nbsp;0)&nbsp;x)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((=&nbsp;x&nbsp;0)&nbsp;(display&nbsp;'zero)&nbsp;0)<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((=&nbsp;x&nbsp;0)&nbsp;(display&nbsp;’zero)&nbsp;0)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(else&nbsp;(-&nbsp;x)))<br /></tt></p>
 
     <p>to the problem of evaluating the following expression involving <tt>if</tt> and <tt>begin</tt> expressions:</p>
@@ -342,7 +342,7 @@
     <p><tt>(if&nbsp;(&gt;&nbsp;x&nbsp;0)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;x<br />
     &nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(=&nbsp;x&nbsp;0)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(begin&nbsp;(display&nbsp;'zero)<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(begin&nbsp;(display&nbsp;’zero)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(-&nbsp;x)))<br /></tt></p>
 
@@ -350,10 +350,10 @@
 
     <p>We include syntax procedures that extract the parts of a <tt>cond</tt> expression, and a procedure <tt>cond-&gt;if</tt> that transforms <tt>cond</tt> expressions into <tt>if</tt> expressions. A case analysis begins with <tt>cond</tt> and has a list of predicate-action clauses. A clause is an <tt>else</tt> clause if its predicate is the symbol <tt>else</tt>.<a href="#footnote_Temp_530" name="call_footnote_Temp_530" id="call_footnote_Temp_530"><sup><small>12</small></sup></a></p>
 
-    <p><tt><a name="%_idx_4360"></a>(define&nbsp;(cond?&nbsp;exp)&nbsp;(tagged-list?&nbsp;exp&nbsp;'cond))<br />
+    <p><tt><a name="%_idx_4360"></a>(define&nbsp;(cond?&nbsp;exp)&nbsp;(tagged-list?&nbsp;exp&nbsp;’cond))<br />
     <a name="%_idx_4362"></a>(define&nbsp;(cond-clauses&nbsp;exp)&nbsp;(cdr&nbsp;exp))<br />
     <a name="%_idx_4364"></a>(define&nbsp;(cond-else-clause?&nbsp;clause)<br />
-    &nbsp;&nbsp;(eq?&nbsp;(cond-predicate&nbsp;clause)&nbsp;'else))<br />
+    &nbsp;&nbsp;(eq?&nbsp;(cond-predicate&nbsp;clause)&nbsp;’else))<br />
     <a name="%_idx_4366"></a>(define&nbsp;(cond-predicate&nbsp;clause)&nbsp;(car&nbsp;clause))<br />
     <a name="%_idx_4368"></a>(define&nbsp;(cond-actions&nbsp;clause)&nbsp;(cdr&nbsp;clause))<br />
     <a name="%_idx_4370"></a>(define&nbsp;(cond-&gt;if&nbsp;exp)<br />
@@ -361,13 +361,13 @@
     <br />
     <a name="%_idx_4372"></a>(define&nbsp;(expand-clauses&nbsp;clauses)<br />
     &nbsp;&nbsp;(if&nbsp;(null?&nbsp;clauses)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'false&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>;&nbsp;no&nbsp;<tt>else</tt>&nbsp;clause</em><br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;’false&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>;&nbsp;no&nbsp;<tt>else</tt>&nbsp;clause</em><br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;((first&nbsp;(car&nbsp;clauses))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(rest&nbsp;(cdr&nbsp;clauses)))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(cond-else-clause?&nbsp;first)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(null?&nbsp;rest)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(sequence-&gt;exp&nbsp;(cond-actions&nbsp;first))<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(error&nbsp;"ELSE&nbsp;clause&nbsp;isn't&nbsp;last&nbsp;--&nbsp;COND-&gt;IF"<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(error&nbsp;“ELSE&nbsp;clause&nbsp;isn’t&nbsp;last&nbsp;—&nbsp;COND-&gt;IF”<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clauses))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(make-if&nbsp;(cond-predicate&nbsp;first)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(sequence-&gt;exp&nbsp;(cond-actions&nbsp;first))<br />
@@ -377,9 +377,9 @@
 
     <p><a name="%_thm_4.2"></a> <b>Exercise 4.2.</b>&nbsp;&nbsp;<a name="%_idx_4384"></a>Louis Reasoner plans to reorder the <tt>cond</tt> clauses in <tt>eval</tt> so that the clause for procedure applications appears before the clause for assignments. He argues that this will make the interpreter more efficient: Since programs usually contain more applications than assignments, definitions, and so on, his modified <tt>eval</tt> will usually check fewer clauses than the original <tt>eval</tt> before identifying the type of an expression.</p>
 
-    <p>a. What is wrong with Louis's plan? (Hint: What will Louis's evaluator do with the expression <tt>(define x 3)</tt>?)</p>
+    <p>a. What is wrong with Louis’s plan? (Hint: What will Louis’s evaluator do with the expression <tt>(define x 3)</tt>?)</p>
 
-    <p><a name="%_idx_4386"></a>b. Louis is upset that his plan didn't work. He is willing to go to any lengths to make his evaluator recognize procedure applications before it checks for most other kinds of expressions. Help him by changing the syntax of the evaluated language so that procedure applications start with <tt>call</tt>. For example, instead of <tt>(factorial 3)</tt> we will now have to write <tt>(call factorial 3)</tt> and instead of <tt>(+ 1 2)</tt> we will have to write <tt>(call + 1 2)</tt>.</p>
+    <p><a name="%_idx_4386"></a>b. Louis is upset that his plan didn’t work. He is willing to go to any lengths to make his evaluator recognize procedure applications before it checks for most other kinds of expressions. Help him by changing the syntax of the evaluated language so that procedure applications start with <tt>call</tt>. For example, instead of <tt>(factorial 3)</tt> we will now have to write <tt>(call factorial 3)</tt> and instead of <tt>(+ 1 2)</tt> we will have to write <tt>(call + 1 2)</tt>.</p>
 
     <p><a name="%_thm_4.3"></a> <b>Exercise 4.3.</b>&nbsp;&nbsp;<a name="%_idx_4388"></a><a name="%_idx_4390"></a><a name="%_idx_4392"></a>Rewrite <tt>eval</tt> so that the dispatch is done in data-directed style. Compare this with the data-directed differentiation procedure of exercise&nbsp;<a href="book-Z-H-17.html#%_thm_2.73">2.73</a>. (You may use the <tt>car</tt> of a compound expression as the type of the expression, as is appropriate for the syntax implemented in this section.) .</p>
 
@@ -395,19 +395,19 @@
 
     <p><a name="%_thm_4.5"></a> <b>Exercise 4.5.</b>&nbsp;&nbsp;<a name="%_idx_4400"></a><a name="%_idx_4402"></a><a name="%_idx_4404"></a>Scheme allows an additional syntax for <tt>cond</tt> clauses, <tt>(&lt;<em>test</em>&gt; =&gt; &lt;<em>recipient</em>&gt;)</tt>. If &lt;<em>test</em>&gt; evaluates to a true value, then &lt;<em>recipient</em>&gt; is evaluated. Its value must be a procedure of one argument; this procedure is then invoked on the value of the &lt;<em>test</em>&gt;, and the result is returned as the value of the <tt>cond</tt> expression. For example</p>
 
-    <p><tt>(cond&nbsp;((assoc&nbsp;'b&nbsp;'((a&nbsp;1)&nbsp;(b&nbsp;2)))&nbsp;=&gt;&nbsp;cadr)<br />
+    <p><tt>(cond&nbsp;((assoc&nbsp;’b&nbsp;’((a&nbsp;1)&nbsp;(b&nbsp;2)))&nbsp;=&gt;&nbsp;cadr)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(else&nbsp;false))<br /></tt></p>
 
     <p>returns 2. Modify the handling of <tt>cond</tt> so that it supports this extended syntax.</p>
 
     <p><a name="%_thm_4.6"></a> <b>Exercise 4.6.</b>&nbsp;&nbsp;<a name="%_idx_4406"></a><tt>Let</tt> expressions are derived expressions, because</p>
 
-    <p><tt>(let&nbsp;((&lt;<em>var<sub>1</sub></em>&gt;&nbsp;&lt;<em>exp<sub>1</sub></em>&gt;)&nbsp;</tt>... (&lt;<em>var<sub><em>n</em></sub></em>&gt;&nbsp;&lt;<em>exp<sub><em>n</em></sub></em>&gt;))<br />
+    <p><tt>(let&nbsp;((&lt;<em>var<sub>1</sub></em>&gt;&nbsp;&lt;<em>exp<sub>1</sub></em>&gt;)&nbsp;</tt>… (&lt;<em>var<sub><em>n</em></sub></em>&gt;&nbsp;&lt;<em>exp<sub><em>n</em></sub></em>&gt;))<br />
     &nbsp;&nbsp;&lt;<em>body</em>&gt;)<br /></p>
 
     <p>is equivalent to</p>
 
-    <p><tt>((lambda&nbsp;(&lt;<em>var<sub>1</sub></em>&gt;&nbsp;</tt>... &lt;<em>var<sub><em>n</em></sub></em>&gt;)<br />
+    <p><tt>((lambda&nbsp;(&lt;<em>var<sub>1</sub></em>&gt;&nbsp;</tt>… &lt;<em>var<sub><em>n</em></sub></em>&gt;)<br />
     &nbsp;&nbsp;&nbsp;&lt;<em>body</em>&gt;)<br />
     &nbsp;&lt;<em>exp<sub>1</sub></em>&gt;<br />
     &nbsp;<img src="book-Z-G-D-18.gif" border="0" /><br />
@@ -428,7 +428,7 @@
 
     <p>or must we explicitly expand <tt>let*</tt> in terms of non-derived expressions?</p>
 
-    <p><a name="%_thm_4.8"></a> <b>Exercise 4.8.</b>&nbsp;&nbsp;<a name="%_idx_4414"></a><a name="%_idx_4416"></a><a name="%_idx_4418"></a><a name="%_idx_4420"></a>``Named <tt>let</tt>'' is a variant of <tt>let</tt> that has the form</p>
+    <p><a name="%_thm_4.8"></a> <b>Exercise 4.8.</b>&nbsp;&nbsp;<a name="%_idx_4414"></a><a name="%_idx_4416"></a><a name="%_idx_4418"></a><a name="%_idx_4420"></a>“Named <tt>let</tt>“ is a variant of <tt>let</tt> that has the form</p>
 
     <p><tt>(let&nbsp;&lt;<em>var</em>&gt;&nbsp;&lt;<em>bindings</em>&gt;&nbsp;&lt;<em>body</em>&gt;)<br /></tt></p>
 
@@ -484,9 +484,9 @@
     <p>Compound procedures are constructed from parameters, procedure bodies, and environments using the constructor <tt>make-procedure</tt>:</p>
 
     <p><tt><a name="%_idx_4444"></a>(define&nbsp;(make-procedure&nbsp;parameters&nbsp;body&nbsp;env)<br />
-    &nbsp;&nbsp;(list&nbsp;'procedure&nbsp;parameters&nbsp;body&nbsp;env))<br />
+    &nbsp;&nbsp;(list&nbsp;’procedure&nbsp;parameters&nbsp;body&nbsp;env))<br />
     <a name="%_idx_4446"></a>(define&nbsp;(compound-procedure?&nbsp;p)<br />
-    &nbsp;&nbsp;(tagged-list?&nbsp;p&nbsp;'procedure))<br />
+    &nbsp;&nbsp;(tagged-list?&nbsp;p&nbsp;’procedure))<br />
     <a name="%_idx_4448"></a>(define&nbsp;(procedure-parameters&nbsp;p)&nbsp;(cadr&nbsp;p))<br />
     <a name="%_idx_4450"></a>(define&nbsp;(procedure-body&nbsp;p)&nbsp;(caddr&nbsp;p))<br />
     <a name="%_idx_4452"></a>(define&nbsp;(procedure-environment&nbsp;p)&nbsp;(cadddr&nbsp;p))<br /></tt></p>
@@ -515,7 +515,7 @@
 
     <p><tt><a name="%_idx_4466"></a>(define&nbsp;(enclosing-environment&nbsp;env)&nbsp;(cdr&nbsp;env))<br />
     <a name="%_idx_4468"></a>(define&nbsp;(first-frame&nbsp;env)&nbsp;(car&nbsp;env))<br />
-    (define&nbsp;the-empty-environment&nbsp;'())<br /></tt></p>
+    (define&nbsp;the-empty-environment&nbsp;’())<br /></tt></p>
 
     <p>Each frame of an environment is represented as a pair of lists: a list of the variables bound in that frame and a list of the associated values.<a href="#footnote_Temp_544" name="call_footnote_Temp_544" id="call_footnote_Temp_544"><sup><small>14</small></sup></a></p>
 
@@ -533,10 +533,10 @@
     &nbsp;&nbsp;(if&nbsp;(=&nbsp;(length&nbsp;vars)&nbsp;(length&nbsp;vals))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(cons&nbsp;(make-frame&nbsp;vars&nbsp;vals)&nbsp;base-env)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(&lt;&nbsp;(length&nbsp;vars)&nbsp;(length&nbsp;vals))<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(error&nbsp;"Too&nbsp;many&nbsp;arguments&nbsp;supplied"&nbsp;vars&nbsp;vals)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(error&nbsp;"Too&nbsp;few&nbsp;arguments&nbsp;supplied"&nbsp;vars&nbsp;vals))))<br /></tt></p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(error&nbsp;“Too&nbsp;many&nbsp;arguments&nbsp;supplied”&nbsp;vars&nbsp;vals)<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(error&nbsp;“Too&nbsp;few&nbsp;arguments&nbsp;supplied”&nbsp;vars&nbsp;vals))))<br /></tt></p>
 
-    <p>To look up a variable in an environment, we scan the list of variables in the first frame. If we find the desired variable, we return the corresponding element in the list of values. If we do not find the variable in the current frame, we search the enclosing environment, and so on. If we reach the empty environment, we signal an ``unbound variable'' error.</p>
+    <p>To look up a variable in an environment, we scan the list of variables in the first frame. If we find the desired variable, we return the corresponding element in the list of values. If we do not find the variable in the current frame, we search the enclosing environment, and so on. If we reach the empty environment, we signal an “unbound variable” error.</p>
 
     <p><tt><a name="%_idx_4480"></a>(define&nbsp;(lookup-variable-value&nbsp;var&nbsp;env)<br />
     &nbsp;&nbsp;(define&nbsp;(env-loop&nbsp;env)<br />
@@ -547,7 +547,7 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(car&nbsp;vals))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(else&nbsp;(scan&nbsp;(cdr&nbsp;vars)&nbsp;(cdr&nbsp;vals)))))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(eq?&nbsp;env&nbsp;the-empty-environment)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(error&nbsp;"Unbound&nbsp;variable"&nbsp;var)<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(error&nbsp;“Unbound&nbsp;variable”&nbsp;var)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;((frame&nbsp;(first-frame&nbsp;env)))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(scan&nbsp;(frame-variables&nbsp;frame)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(frame-values&nbsp;frame)))))<br />
@@ -564,7 +564,7 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(set-car!&nbsp;vals&nbsp;val))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(else&nbsp;(scan&nbsp;(cdr&nbsp;vars)&nbsp;(cdr&nbsp;vals)))))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(eq?&nbsp;env&nbsp;the-empty-environment)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(error&nbsp;"Unbound&nbsp;variable&nbsp;--&nbsp;SET!"&nbsp;var)<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(error&nbsp;“Unbound&nbsp;variable&nbsp;—&nbsp;SET!”&nbsp;var)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;((frame&nbsp;(first-frame&nbsp;env)))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(scan&nbsp;(frame-variables&nbsp;frame)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(frame-values&nbsp;frame)))))<br />
@@ -583,7 +583,7 @@
     &nbsp;&nbsp;&nbsp;&nbsp;(scan&nbsp;(frame-variables&nbsp;frame)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(frame-values&nbsp;frame))))<br /></tt></p>
 
-    <p><a name="%_idx_4486"></a>The method described here is only one of many plausible ways to represent environments. Since we used data abstraction to isolate the rest of the evaluator from the detailed choice of representation, we could change the environment representation if we wanted to. (See exercise&nbsp;<a href="#%_thm_4.11">4.11</a>.) In a production-quality Lisp system, the speed of the evaluator's environment operations -- especially that of variable lookup -- has a major impact on the performance of the system. The representation described here, although conceptually simple, is not efficient and would not ordinarily be used in a production system.<a href="#footnote_Temp_545" name="call_footnote_Temp_545" id="call_footnote_Temp_545"><sup><small>15</small></sup></a></p>
+    <p><a name="%_idx_4486"></a>The method described here is only one of many plausible ways to represent environments. Since we used data abstraction to isolate the rest of the evaluator from the detailed choice of representation, we could change the environment representation if we wanted to. (See exercise&nbsp;<a href="#%_thm_4.11">4.11</a>.) In a production-quality Lisp system, the speed of the evaluator’s environment operations—especially that of variable lookup—has a major impact on the performance of the system. The representation described here, although conceptually simple, is not efficient and would not ordinarily be used in a production system.<a href="#footnote_Temp_545" name="call_footnote_Temp_545" id="call_footnote_Temp_545"><sup><small>15</small></sup></a></p>
 
     <p><a name="%_thm_4.11"></a> <b>Exercise 4.11.</b>&nbsp;&nbsp;Instead of representing a frame as a pair of lists, we can represent a frame as a list of bindings, where each binding is a name-value pair. Rewrite the environment operations to use this alternative representation.</p>
 
@@ -606,25 +606,25 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(extend-environment&nbsp;(primitive-procedure-names)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(primitive-procedure-objects)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the-empty-environment)))<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;(define-variable!&nbsp;'true&nbsp;true&nbsp;initial-env)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;(define-variable!&nbsp;'false&nbsp;false&nbsp;initial-env)<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;(define-variable!&nbsp;’true&nbsp;true&nbsp;initial-env)<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;(define-variable!&nbsp;’false&nbsp;false&nbsp;initial-env)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;initial-env))<br />
     <a name="%_idx_4504"></a>(define&nbsp;the-global-environment&nbsp;(setup-environment))<br /></tt></p>
 
     <p>It does not matter how we represent the primitive procedure objects, so long as <tt>apply</tt> can identify and apply them by using the procedures <tt>primitive-procedure?</tt> and <tt>apply-primitive-procedure</tt>. We have chosen to represent a primitive procedure as a list beginning with the symbol <tt>primitive</tt> and containing a procedure in the underlying Lisp that implements that primitive.</p>
 
     <p><tt><a name="%_idx_4506"></a>(define&nbsp;(primitive-procedure?&nbsp;proc)<br />
-    &nbsp;&nbsp;(tagged-list?&nbsp;proc&nbsp;'primitive))<br />
+    &nbsp;&nbsp;(tagged-list?&nbsp;proc&nbsp;’primitive))<br />
     <br />
     <a name="%_idx_4508"></a>(define&nbsp;(primitive-implementation&nbsp;proc)&nbsp;(cadr&nbsp;proc))<br /></tt></p>
 
     <p><tt>Setup-environment</tt> will get the primitive names and implementation procedures from a list:<a href="#footnote_Temp_549" name="call_footnote_Temp_549" id="call_footnote_Temp_549"><sup><small>16</small></sup></a></p>
 
     <p><tt>(define&nbsp;primitive-procedures<br />
-    &nbsp;&nbsp;(list&nbsp;(list&nbsp;'car&nbsp;car)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(list&nbsp;'cdr&nbsp;cdr)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(list&nbsp;'cons&nbsp;cons)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(list&nbsp;'null?&nbsp;null?)<br />
+    &nbsp;&nbsp;(list&nbsp;(list&nbsp;’car&nbsp;car)<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(list&nbsp;’cdr&nbsp;cdr)<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(list&nbsp;’cons&nbsp;cons)<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(list&nbsp;’null?&nbsp;null?)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<em>more&nbsp;primitives</em>&gt;<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;))<br />
     <a name="%_idx_4510"></a>(define&nbsp;(primitive-procedure-names)<br />
@@ -632,7 +632,7 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;primitive-procedures))<br />
     <br />
     (define&nbsp;(primitive-procedure-objects)<br />
-    <a name="%_idx_4512"></a>&nbsp;&nbsp;(map&nbsp;(lambda&nbsp;(proc)&nbsp;(list&nbsp;'primitive&nbsp;(cadr&nbsp;proc)))<br />
+    <a name="%_idx_4512"></a>&nbsp;&nbsp;(map&nbsp;(lambda&nbsp;(proc)&nbsp;(list&nbsp;’primitive&nbsp;(cadr&nbsp;proc)))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;primitive-procedures))<br /></tt></p>
 
     <p>To apply a primitive procedure, we simply apply the implementation procedure to the arguments, using the underlying Lisp system:<a href="#footnote_Temp_550" name="call_footnote_Temp_550" id="call_footnote_Temp_550"><sup><small>17</small></sup></a></p>
@@ -643,8 +643,8 @@
 
     <p><a name="%_idx_4516"></a><a name="%_idx_4518"></a>For convenience in running the metacircular evaluator, we provide a <em>driver loop</em> that models the read-eval-print loop of the underlying Lisp system. It prints a <a name="%_idx_4520"></a><em>prompt</em>, reads an input expression, evaluates this expression in the global environment, and prints the result. We precede each printed result by an <em>output prompt</em> so as to distinguish the value of the expression from other output that may be printed.<a href="#footnote_Temp_551" name="call_footnote_Temp_551" id="call_footnote_Temp_551"><sup><small>18</small></sup></a></p>
 
-    <p><tt><a name="%_idx_4530"></a>(define&nbsp;input-prompt&nbsp;";;;&nbsp;M-Eval&nbsp;input:")<br />
-    (define&nbsp;output-prompt&nbsp;";;;&nbsp;M-Eval&nbsp;value:")<br />
+    <p><tt><a name="%_idx_4530"></a>(define&nbsp;input-prompt&nbsp;”;;;&nbsp;M-Eval&nbsp;input:”)<br />
+    (define&nbsp;output-prompt&nbsp;”;;;&nbsp;M-Eval&nbsp;value:”)<br />
     <a name="%_idx_4532"></a>(define&nbsp;(driver-loop)<br />
     &nbsp;&nbsp;(prompt-for-input&nbsp;input-prompt)<br />
     &nbsp;&nbsp;(let&nbsp;((input&nbsp;(read)))<br />
@@ -662,10 +662,10 @@
 
     <p><tt><a name="%_idx_4538"></a>(define&nbsp;(user-print&nbsp;object)<br />
     &nbsp;&nbsp;(if&nbsp;(compound-procedure?&nbsp;object)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(display&nbsp;(list&nbsp;'compound-procedure<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(display&nbsp;(list&nbsp;’compound-procedure<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(procedure-parameters&nbsp;object)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(procedure-body&nbsp;object)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&lt;procedure-env&gt;))<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;’&lt;procedure-env&gt;))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(display&nbsp;object)))<br /></tt></p>
 
     <p>Now all we need to do to run the evaluator is to initialize the global environment and start the driver loop. Here is a sample interaction:</p>
@@ -681,11 +681,11 @@
     <i>;;;&nbsp;M-Eval&nbsp;value:</i><br />
     <i>ok</i><br />
     <i>;;;&nbsp;M-Eval&nbsp;input:</i><br />
-    (append&nbsp;'(a&nbsp;b&nbsp;c)&nbsp;'(d&nbsp;e&nbsp;f))<br />
+    (append&nbsp;’(a&nbsp;b&nbsp;c)&nbsp;’(d&nbsp;e&nbsp;f))<br />
     <i>;;;&nbsp;M-Eval&nbsp;value:</i><br />
     <i>(a&nbsp;b&nbsp;c&nbsp;d&nbsp;e&nbsp;f)</i><br /></tt></p>
 
-    <p><a name="%_thm_4.14"></a> <b>Exercise 4.14.</b>&nbsp;&nbsp;Eva Lu Ator and Louis Reasoner are each experimenting with the metacircular evaluator. Eva types in the definition of <tt>map</tt>, and runs some test programs that use it. They work fine. Louis, in contrast, has installed the system version of <tt>map</tt> as a primitive for the metacircular evaluator. When he tries it, things go terribly wrong. Explain why Louis's <tt>map</tt> fails even though Eva's works.</p>
+    <p><a name="%_thm_4.14"></a> <b>Exercise 4.14.</b>&nbsp;&nbsp;Eva Lu Ator and Louis Reasoner are each experimenting with the metacircular evaluator. Eva types in the definition of <tt>map</tt>, and runs some test programs that use it. They work fine. Louis, in contrast, has installed the system version of <tt>map</tt> as a primitive for the metacircular evaluator. When he tries it, things go terribly wrong. Explain why Louis’s <tt>map</tt> fails even though Eva’s works.</p>
 
     <p><a name="%_sec_4.1.5"></a></p>
 
@@ -742,24 +742,24 @@
 
     <p>Another striking aspect of the evaluator is that it acts as a bridge between the data objects that are manipulated by our programming language and the programming language itself. Imagine that the evaluator program (implemented in Lisp) is running, and that a user is typing expressions to the evaluator and observing the results. From the perspective of the user, an input expression such as <tt>(* x x)</tt> is an expression in the programming language, which the evaluator should execute. From the perspective of the evaluator, however, the expression is simply a list (in this case, a list of three symbols: <tt>*</tt>, <tt>x</tt>, and <tt>x</tt>) that is to be manipulated according to a well-defined set of rules.</p>
 
-    <p>That the user's programs are the evaluator's data need not be a source of confusion. In fact, it is sometimes convenient to ignore this distinction, and to give the user the ability to explicitly evaluate a data object as a Lisp expression, by making <tt>eval</tt> available for use in programs. Many Lisp dialects provide a <a name="%_idx_4572"></a><a name="%_idx_4574"></a>primitive <tt>eval</tt> procedure that takes as arguments an expression and an environment and evaluates the expression relative to the environment.<a href="#footnote_Temp_555" name="call_footnote_Temp_555" id="call_footnote_Temp_555"><sup><small>21</small></sup></a> Thus,</p>
+    <p>That the user’s programs are the evaluator’s data need not be a source of confusion. In fact, it is sometimes convenient to ignore this distinction, and to give the user the ability to explicitly evaluate a data object as a Lisp expression, by making <tt>eval</tt> available for use in programs. Many Lisp dialects provide a <a name="%_idx_4572"></a><a name="%_idx_4574"></a>primitive <tt>eval</tt> procedure that takes as arguments an expression and an environment and evaluates the expression relative to the environment.<a href="#footnote_Temp_555" name="call_footnote_Temp_555" id="call_footnote_Temp_555"><sup><small>21</small></sup></a> Thus,</p>
 
-    <p><tt>(eval&nbsp;'(*&nbsp;5&nbsp;5)&nbsp;user-initial-environment)<br /></tt></p>
+    <p><tt>(eval&nbsp;’(*&nbsp;5&nbsp;5)&nbsp;user-initial-environment)<br /></tt></p>
 
     <p>and</p>
 
-    <p><tt>(eval&nbsp;(cons&nbsp;'*&nbsp;(list&nbsp;5&nbsp;5))&nbsp;user-initial-environment)<br /></tt></p>
+    <p><tt>(eval&nbsp;(cons&nbsp;’*&nbsp;(list&nbsp;5&nbsp;5))&nbsp;user-initial-environment)<br /></tt></p>
 
     <p>will both return 25.<a href="#footnote_Temp_556" name="call_footnote_Temp_556" id="call_footnote_Temp_556"><sup><small>22</small></sup></a></p>
 
-    <p><a name="%_thm_4.15"></a> <b>Exercise 4.15.</b>&nbsp;&nbsp;<a name="%_idx_4588"></a>Given a one-argument procedure <tt>p</tt> and an object <tt>a</tt>, <tt>p</tt> is said to ``halt'' on <tt>a</tt> if evaluating the expression <tt>(p a)</tt> returns a value (as opposed to terminating with an error message or running forever). Show that it is impossible to write a procedure <tt>halts?</tt> that correctly determines whether <tt>p</tt> halts on <tt>a</tt> for any procedure <tt>p</tt> and object <tt>a</tt>. Use the following reasoning: If you had such a procedure <tt>halts?</tt>, you could implement the following program:</p>
+    <p><a name="%_thm_4.15"></a> <b>Exercise 4.15.</b>&nbsp;&nbsp;<a name="%_idx_4588"></a>Given a one-argument procedure <tt>p</tt> and an object <tt>a</tt>, <tt>p</tt> is said to “halt” on <tt>a</tt> if evaluating the expression <tt>(p a)</tt> returns a value (as opposed to terminating with an error message or running forever). Show that it is impossible to write a procedure <tt>halts?</tt> that correctly determines whether <tt>p</tt> halts on <tt>a</tt> for any procedure <tt>p</tt> and object <tt>a</tt>. Use the following reasoning: If you had such a procedure <tt>halts?</tt>, you could implement the following program:</p>
 
     <p><tt>(define&nbsp;(run-forever)&nbsp;(run-forever))<br />
     <br />
     (define&nbsp;(try&nbsp;p)<br />
     &nbsp;&nbsp;(if&nbsp;(halts?&nbsp;p&nbsp;p)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(run-forever)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'halted))<br /></tt></p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;’halted))<br /></tt></p>
 
     <p>Now consider evaluating the expression <tt>(try try)</tt> and show that any possible outcome (either halting or running forever) violates the intended behavior of <tt>halts?</tt>.<a href="#footnote_Temp_558" name="call_footnote_Temp_558" id="call_footnote_Temp_558"><sup><small>23</small></sup></a></p>
 
@@ -782,11 +782,11 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(even?&nbsp;(-&nbsp;n&nbsp;1))))<br />
     &nbsp;&nbsp;&lt;<em>rest&nbsp;of&nbsp;body&nbsp;of&nbsp;<tt>f</tt></em>&gt;)<br /></tt></p>
 
-    <p>Our intention here is that the name <tt>odd?</tt> in the body of the procedure <tt>even?</tt> should refer to the procedure <tt>odd?</tt> that is defined after <tt>even?</tt>. The scope of the name <tt>odd?</tt> is the entire body of <tt>f</tt>, not just the portion of the body of <tt>f</tt> starting at the point where the <tt>define</tt> for <tt>odd?</tt> occurs. Indeed, when we consider that <tt>odd?</tt> is itself defined in terms of <tt>even?</tt> -- so that <tt>even?</tt> and <tt>odd?</tt> are mutually recursive procedures -- we see that the only satisfactory interpretation of the two <tt>define</tt>s is to regard them as if the names <tt>even?</tt> and <tt>odd?</tt> were being added to the environment simultaneously. More generally, in block structure, the scope of a local name is the entire procedure body in which the <tt>define</tt> is evaluated.</p>
+    <p>Our intention here is that the name <tt>odd?</tt> in the body of the procedure <tt>even?</tt> should refer to the procedure <tt>odd?</tt> that is defined after <tt>even?</tt>. The scope of the name <tt>odd?</tt> is the entire body of <tt>f</tt>, not just the portion of the body of <tt>f</tt> starting at the point where the <tt>define</tt> for <tt>odd?</tt> occurs. Indeed, when we consider that <tt>odd?</tt> is itself defined in terms of <tt>even?</tt>—so that <tt>even?</tt> and <tt>odd?</tt> are mutually recursive procedures—we see that the only satisfactory interpretation of the two <tt>define</tt>s is to regard them as if the names <tt>even?</tt> and <tt>odd?</tt> were being added to the environment simultaneously. More generally, in block structure, the scope of a local name is the entire procedure body in which the <tt>define</tt> is evaluated.</p>
 
-    <p>As it happens, our interpreter will evaluate calls to <tt>f</tt> correctly, but for an ``accidental'' reason: Since the definitions of the internal procedures come first, no calls to these procedures will be evaluated until all of them have been defined. Hence, <tt>odd?</tt> will have been defined by the time <tt>even?</tt> is executed. In fact, our sequential evaluation mechanism will give the same result as a mechanism that directly implements simultaneous definition for any procedure in which the <a name="%_idx_4604"></a>internal definitions come first in a body and evaluation of the value expressions for the defined variables doesn't actually use any of the defined variables. (For an example of a procedure that doesn't obey these restrictions, so that sequential definition isn't equivalent to simultaneous definition, see exercise&nbsp;<a href="#%_thm_4.19">4.19</a>.)<a href="#footnote_Temp_559" name="call_footnote_Temp_559" id="call_footnote_Temp_559"><sup><small>24</small></sup></a></p>
+    <p>As it happens, our interpreter will evaluate calls to <tt>f</tt> correctly, but for an “accidental” reason: Since the definitions of the internal procedures come first, no calls to these procedures will be evaluated until all of them have been defined. Hence, <tt>odd?</tt> will have been defined by the time <tt>even?</tt> is executed. In fact, our sequential evaluation mechanism will give the same result as a mechanism that directly implements simultaneous definition for any procedure in which the <a name="%_idx_4604"></a>internal definitions come first in a body and evaluation of the value expressions for the defined variables doesn’t actually use any of the defined variables. (For an example of a procedure that doesn’t obey these restrictions, so that sequential definition isn’t equivalent to simultaneous definition, see exercise&nbsp;<a href="#%_thm_4.19">4.19</a>.)<a href="#footnote_Temp_559" name="call_footnote_Temp_559" id="call_footnote_Temp_559"><sup><small>24</small></sup></a></p>
 
-    <p>There is, however, a simple way to treat definitions so that internally defined names have truly simultaneous scope -- just create all local variables that will be in the current environment before evaluating any of the value expressions. One way to do this is by a syntax transformation on <tt>lambda</tt> expressions. Before evaluating the body of a <tt>lambda</tt> expression, we <a name="%_idx_4606"></a><a name="%_idx_4608"></a>``scan out'' and eliminate all the internal definitions in the body. The internally defined variables will be created with a <tt>let</tt> and then set to their values by assignment. For example, the procedure</p>
+    <p>There is, however, a simple way to treat definitions so that internally defined names have truly simultaneous scope—just create all local variables that will be in the current environment before evaluating any of the value expressions. One way to do this is by a syntax transformation on <tt>lambda</tt> expressions. Before evaluating the body of a <tt>lambda</tt> expression, we <a name="%_idx_4606"></a><a name="%_idx_4608"></a>“scan out” and eliminate all the internal definitions in the body. The internally defined variables will be created with a <tt>let</tt> and then set to their values by assignment. For example, the procedure</p>
 
     <p><tt>(lambda&nbsp;&lt;<em>vars</em>&gt;<br />
     &nbsp;&nbsp;(define&nbsp;u&nbsp;&lt;<em>e1</em>&gt;)<br />
@@ -796,15 +796,15 @@
     <p>would be transformed into</p>
 
     <p><tt>(lambda&nbsp;&lt;<em>vars</em>&gt;<br />
-    &nbsp;&nbsp;(let&nbsp;((u&nbsp;'*unassigned*)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(v&nbsp;'*unassigned*))<br />
+    &nbsp;&nbsp;(let&nbsp;((u&nbsp;’*unassigned*)<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(v&nbsp;’*unassigned*))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;(set!&nbsp;u&nbsp;&lt;<em>e1</em>&gt;)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;(set!&nbsp;v&nbsp;&lt;<em>e2</em>&gt;)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&lt;<em>e3</em>&gt;))<br /></tt></p>
 
     <p>where <tt>*unassigned*</tt> is a special symbol that causes looking up a variable to signal an error if an attempt is made to use the value of the not-yet-assigned variable.</p>
 
-    <p>An alternative strategy for scanning out internal definitions is shown in exercise&nbsp;<a href="#%_thm_4.18">4.18</a>. Unlike the transformation shown above, this enforces the restriction that the defined variables' values can be evaluated without using any of the variables' values.<a href="#footnote_Temp_560" name="call_footnote_Temp_560" id="call_footnote_Temp_560"><sup><small>25</small></sup></a></p>
+    <p>An alternative strategy for scanning out internal definitions is shown in exercise&nbsp;<a href="#%_thm_4.18">4.18</a>. Unlike the transformation shown above, this enforces the restriction that the defined variables’ values can be evaluated without using any of the variables’ values.<a href="#footnote_Temp_560" name="call_footnote_Temp_560" id="call_footnote_Temp_560"><sup><small>25</small></sup></a></p>
 
     <p><a name="%_thm_4.16"></a> <b>Exercise 4.16.</b>&nbsp;&nbsp;In this exercise we implement the method just described for interpreting internal definitions. We assume that the evaluator supports <tt>let</tt> (see exercise&nbsp;<a href="#%_thm_4.6">4.6</a>).</p>
 
@@ -814,20 +814,20 @@
 
     <p>c.&nbsp;&nbsp;Install <tt>scan-out-defines</tt> in the interpreter, either in <tt>make-procedure</tt> or in <tt>procedure-body</tt> (see section&nbsp;<a href="#%_sec_4.1.3">4.1.3</a>). Which place is better? Why?</p>
 
-    <p><a name="%_thm_4.17"></a> <b>Exercise 4.17.</b>&nbsp;&nbsp;Draw diagrams of the environment in effect when evaluating the expression &lt;<em>e3</em>&gt; in the procedure in the text, comparing how this will be structured when definitions are interpreted sequentially with how it will be structured if definitions are scanned out as described. Why is there an extra frame in the transformed program? Explain why this difference in environment structure can never make a difference in the behavior of a correct program. Design a way to make the interpreter implement the ``simultaneous'' scope rule for internal definitions without constructing the extra frame.</p>
+    <p><a name="%_thm_4.17"></a> <b>Exercise 4.17.</b>&nbsp;&nbsp;Draw diagrams of the environment in effect when evaluating the expression &lt;<em>e3</em>&gt; in the procedure in the text, comparing how this will be structured when definitions are interpreted sequentially with how it will be structured if definitions are scanned out as described. Why is there an extra frame in the transformed program? Explain why this difference in environment structure can never make a difference in the behavior of a correct program. Design a way to make the interpreter implement the “simultaneous” scope rule for internal definitions without constructing the extra frame.</p>
 
     <p><a name="%_thm_4.18"></a> <b>Exercise 4.18.</b>&nbsp;&nbsp;Consider an alternative strategy for scanning out definitions that translates the example in the text to</p>
 
     <p><tt>(lambda&nbsp;&lt;<em>vars</em>&gt;<br />
-    &nbsp;&nbsp;(let&nbsp;((u&nbsp;'*unassigned*)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(v&nbsp;'*unassigned*))<br />
+    &nbsp;&nbsp;(let&nbsp;((u&nbsp;’*unassigned*)<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(v&nbsp;’*unassigned*))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;((a&nbsp;&lt;<em>e1</em>&gt;)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(b&nbsp;&lt;<em>e2</em>&gt;))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(set!&nbsp;u&nbsp;a)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(set!&nbsp;v&nbsp;b))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&lt;<em>e3</em>&gt;))<br /></tt></p>
 
-    <p>Here <tt>a</tt> and <tt>b</tt> are meant to represent new variable names, created by the interpreter, that do not appear in the user's program. Consider the <tt>solve</tt> procedure from section&nbsp;<a href="book-Z-H-24.html#%_sec_3.5.4">3.5.4</a>:</p>
+    <p>Here <tt>a</tt> and <tt>b</tt> are meant to represent new variable names, created by the interpreter, that do not appear in the user’s program. Consider the <tt>solve</tt> procedure from section&nbsp;<a href="book-Z-H-24.html#%_sec_3.5.4">3.5.4</a>:</p>
 
     <p><tt><a name="%_idx_4616"></a>(define&nbsp;(solve&nbsp;f&nbsp;y0&nbsp;dt)<br />
     &nbsp;&nbsp;(define&nbsp;y&nbsp;(integral&nbsp;(delay&nbsp;dy)&nbsp;y0&nbsp;dt))<br />
@@ -845,7 +845,7 @@
     &nbsp;&nbsp;&nbsp;&nbsp;(+&nbsp;a&nbsp;b))<br />
     &nbsp;&nbsp;(f&nbsp;10))<br /></tt></p>
 
-    <p>Ben asserts that the result should be obtained using the sequential rule for <tt>define</tt>: <tt>b</tt> is defined to be 11, then <tt>a</tt> is defined to be 5, so the result is 16. Alyssa objects that mutual recursion requires the simultaneous scope rule for internal procedure definitions, and that it is unreasonable to treat procedure names differently from other names. Thus, she argues for the mechanism implemented in exercise&nbsp;<a href="#%_thm_4.16">4.16</a>. This would lead to <tt>a</tt> being unassigned at the time that the value for <tt>b</tt> is to be computed. Hence, in Alyssa's view the procedure should produce an error. Eva has a third opinion. She says that if the definitions of <tt>a</tt> and <tt>b</tt> are truly meant to be simultaneous, then the value 5 for <tt>a</tt> should be used in evaluating <tt>b</tt>. Hence, in Eva's view <tt>a</tt> should be 5, <tt>b</tt> should be 15, and the result should be 20. Which (if any) of these viewpoints do you support? Can you devise a way to implement internal definitions so that they behave as Eva prefers?<a href="#footnote_Temp_565" name="call_footnote_Temp_565" id="call_footnote_Temp_565"><sup><small>26</small></sup></a></p>
+    <p>Ben asserts that the result should be obtained using the sequential rule for <tt>define</tt>: <tt>b</tt> is defined to be 11, then <tt>a</tt> is defined to be 5, so the result is 16. Alyssa objects that mutual recursion requires the simultaneous scope rule for internal procedure definitions, and that it is unreasonable to treat procedure names differently from other names. Thus, she argues for the mechanism implemented in exercise&nbsp;<a href="#%_thm_4.16">4.16</a>. This would lead to <tt>a</tt> being unassigned at the time that the value for <tt>b</tt> is to be computed. Hence, in Alyssa’s view the procedure should produce an error. Eva has a third opinion. She says that if the definitions of <tt>a</tt> and <tt>b</tt> are truly meant to be simultaneous, then the value 5 for <tt>a</tt> should be used in evaluating <tt>b</tt>. Hence, in Eva’s view <tt>a</tt> should be 5, <tt>b</tt> should be 15, and the result should be 20. Which (if any) of these viewpoints do you support? Can you devise a way to implement internal definitions so that they behave as Eva prefers?<a href="#footnote_Temp_565" name="call_footnote_Temp_565" id="call_footnote_Temp_565"><sup><small>26</small></sup></a></p>
 
     <p><a name="%_thm_4.20"></a> <b>Exercise 4.20.</b>&nbsp;&nbsp;<a name="%_idx_4618"></a><a name="%_idx_4620"></a>Because internal definitions look sequential but are actually simultaneous, some people prefer to avoid them entirely, and use the special form <tt>letrec</tt> instead. <tt>Letrec</tt> looks like <tt>let</tt>, so it is not surprising that the variables it binds are bound simultaneously and have the same scope as each other. The sample procedure <tt>f</tt> above can be written without internal definitions, but with exactly the same meaning, as</p>
 
@@ -864,7 +864,7 @@
 
     <p><tt>Letrec</tt> expressions, which have the form</p>
 
-    <p><tt>(letrec&nbsp;((&lt;<em>var<sub>1</sub></em>&gt;&nbsp;&lt;<em>exp<sub>1</sub></em>&gt;)&nbsp;</tt>... (&lt;<em>var<sub><em>n</em></sub></em>&gt;&nbsp;&lt;<em>exp<sub><em>n</em></sub></em>&gt;))<br />
+    <p><tt>(letrec&nbsp;((&lt;<em>var<sub>1</sub></em>&gt;&nbsp;&lt;<em>exp<sub>1</sub></em>&gt;)&nbsp;</tt>… (&lt;<em>var<sub><em>n</em></sub></em>&gt;&nbsp;&lt;<em>exp<sub><em>n</em></sub></em>&gt;))<br />
     &nbsp;&nbsp;&lt;<em>body</em>&gt;)<br /></p>
 
     <p>are a variation on <tt>let</tt> in which the expressions &lt;<em>exp<sub><em>k</em></sub></em>&gt; that provide the initial values for the variables &lt;<em>var<sub><em>k</em></sub></em>&gt; are evaluated in an environment that includes all the <tt>letrec</tt> bindings. This permits recursion in the bindings, such as the mutual recursion of <tt>even?</tt> and <tt>odd?</tt> in the example above, or <a name="%_idx_4622"></a>the evaluation of 10 factorial with</p>
@@ -878,9 +878,9 @@
 
     <p>a. Implement <tt>letrec</tt> as a derived expression, by transforming a <tt>letrec</tt> expression into a <tt>let</tt> expression as shown in the text above or in exercise&nbsp;<a href="#%_thm_4.18">4.18</a>. That is, the <tt>letrec</tt> variables should be created with a <tt>let</tt> and then be assigned their values with <tt>set!</tt>.</p>
 
-    <p>b. Louis Reasoner is confused by all this fuss about internal definitions. The way he sees it, if you don't like to use <tt>define</tt> inside a procedure, you can just use <tt>let</tt>. Illustrate what is loose about his reasoning by drawing an environment diagram that shows the environment in which the &lt;<em>rest of body of <tt>f</tt></em>&gt; is evaluated during evaluation of the expression <tt>(f 5)</tt>, with <tt>f</tt> defined as in this exercise. Draw an environment diagram for the same evaluation, but with <tt>let</tt> in place of <tt>letrec</tt> in the definition of <tt>f</tt>.</p>
+    <p>b. Louis Reasoner is confused by all this fuss about internal definitions. The way he sees it, if you don’t like to use <tt>define</tt> inside a procedure, you can just use <tt>let</tt>. Illustrate what is loose about his reasoning by drawing an environment diagram that shows the environment in which the &lt;<em>rest of body of <tt>f</tt></em>&gt; is evaluated during evaluation of the expression <tt>(f 5)</tt>, with <tt>f</tt> defined as in this exercise. Draw an environment diagram for the same evaluation, but with <tt>let</tt> in place of <tt>letrec</tt> in the definition of <tt>f</tt>.</p>
 
-    <p><a name="%_thm_4.21"></a> <b>Exercise 4.21.</b>&nbsp;&nbsp;<a name="%_idx_4624"></a>Amazingly, Louis's intuition in exercise&nbsp;<a href="#%_thm_4.20">4.20</a> is correct. It is indeed possible to specify recursive procedures without using <tt>letrec</tt> (or even <tt>define</tt>), although the method for accomplishing this is much more subtle than Louis imagined. The following expression computes 10 factorial by applying a recursive <a name="%_idx_4626"></a>factorial procedure:<a href="#footnote_Temp_568" name="call_footnote_Temp_568" id="call_footnote_Temp_568"><sup><small>27</small></sup></a></p>
+    <p><a name="%_thm_4.21"></a> <b>Exercise 4.21.</b>&nbsp;&nbsp;<a name="%_idx_4624"></a>Amazingly, Louis’s intuition in exercise&nbsp;<a href="#%_thm_4.20">4.20</a> is correct. It is indeed possible to specify recursive procedures without using <tt>letrec</tt> (or even <tt>define</tt>), although the method for accomplishing this is much more subtle than Louis imagined. The following expression computes 10 factorial by applying a recursive <a name="%_idx_4626"></a>factorial procedure:<a href="#footnote_Temp_568" name="call_footnote_Temp_568" id="call_footnote_Temp_568"><sup><small>27</small></sup></a></p>
 
     <p><tt>((lambda&nbsp;(n)<br />
     &nbsp;&nbsp;&nbsp;((lambda&nbsp;(fact)<br />
@@ -912,9 +912,9 @@
     &nbsp;&nbsp;((lambda&nbsp;(even?&nbsp;odd?)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(even?&nbsp;even?&nbsp;odd?&nbsp;x))<br />
     &nbsp;&nbsp;&nbsp;(lambda&nbsp;(ev?&nbsp;od?&nbsp;n)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(=&nbsp;n&nbsp;0)&nbsp;true&nbsp;(od?&nbsp;&lt;??&gt;&nbsp;&lt;??&gt;&nbsp;&lt;??&gt;)))<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(=&nbsp;n&nbsp;0)&nbsp;true&nbsp;(od?&nbsp;&lt;?&gt;&nbsp;&lt;?&gt;&nbsp;&lt;?&gt;)))<br />
     &nbsp;&nbsp;&nbsp;(lambda&nbsp;(ev?&nbsp;od?&nbsp;n)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(=&nbsp;n&nbsp;0)&nbsp;false&nbsp;(ev?&nbsp;&lt;??&gt;&nbsp;&lt;??&gt;&nbsp;&lt;??&gt;)))))<br /></tt></p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(=&nbsp;n&nbsp;0)&nbsp;false&nbsp;(ev?&nbsp;&lt;?&gt;&nbsp;&lt;?&gt;&nbsp;&lt;?&gt;)))))<br /></tt></p>
 
     <p><a name="%_sec_4.1.7"></a></p>
 
@@ -951,7 +951,7 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((cond?&nbsp;exp)&nbsp;(analyze&nbsp;(cond-&gt;if&nbsp;exp)))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((application?&nbsp;exp)&nbsp;(analyze-application&nbsp;exp))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(else<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(error&nbsp;"Unknown&nbsp;expression&nbsp;type&nbsp;--&nbsp;ANALYZE"&nbsp;exp))))<br /></tt></p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(error&nbsp;“Unknown&nbsp;expression&nbsp;type&nbsp;—&nbsp;ANALYZE”&nbsp;exp))))<br /></tt></p>
 
     <p>Here is the simplest syntactic analysis procedure, which handles self-evaluating expressions. It returns an execution procedure that ignores its environment argument and just returns the expression:</p>
 
@@ -978,13 +978,13 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(vproc&nbsp;(analyze&nbsp;(assignment-value&nbsp;exp))))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;(lambda&nbsp;(env)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(set-variable-value!&nbsp;var&nbsp;(vproc&nbsp;env)&nbsp;env)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'ok)))<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;’ok)))<br />
     (define&nbsp;(analyze-definition&nbsp;exp)<br />
     &nbsp;&nbsp;(let&nbsp;((var&nbsp;(definition-variable&nbsp;exp))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(vproc&nbsp;(analyze&nbsp;(definition-value&nbsp;exp))))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;(lambda&nbsp;(env)<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(define-variable!&nbsp;var&nbsp;(vproc&nbsp;env)&nbsp;env)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'ok)))<br /></tt></p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;’ok)))<br /></tt></p>
 
     <p>For <tt>if</tt> expressions, we extract and analyze the predicate, consequent, and alternative at analysis time.</p>
 
@@ -1016,7 +1016,7 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(cdr&nbsp;rest-procs))))<br />
     &nbsp;&nbsp;(let&nbsp;((procs&nbsp;(map&nbsp;analyze&nbsp;exps)))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(null?&nbsp;procs)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(error&nbsp;"Empty&nbsp;sequence&nbsp;--&nbsp;ANALYZE"))<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(error&nbsp;“Empty&nbsp;sequence&nbsp;—&nbsp;ANALYZE”))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;(loop&nbsp;(car&nbsp;procs)&nbsp;(cdr&nbsp;procs))))<br /></tt></p>
 
     <p>To analyze an application, we analyze the operator and operands and construct an execution procedure that calls the operator execution procedure (to obtain the actual procedure to be applied) and the operand execution procedures (to obtain the actual arguments). We then pass these to <tt>execute-application</tt>, which is the analog of <tt>apply</tt> in section&nbsp;<a href="#%_sec_4.1.1">4.1.1</a>. <tt>Execute-application</tt> differs from <tt>apply</tt> in that the procedure body for a compound procedure has already been analyzed, so there is no need to do further analysis. Instead, we just call the execution procedure for the body on the extended environment.</p>
@@ -1038,14 +1038,14 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(procedure-environment&nbsp;proc))))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(else<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(error<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Unknown&nbsp;procedure&nbsp;type&nbsp;--&nbsp;EXECUTE-APPLICATION"<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Unknown&nbsp;procedure&nbsp;type&nbsp;—&nbsp;EXECUTE-APPLICATION”<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc))))<br /></tt></p>
 
     <p>Our new evaluator uses the same data structures, syntax procedures, and run-time support procedures as in sections&nbsp;<a href="#%_sec_4.1.2">4.1.2</a>, &nbsp;<a href="#%_sec_4.1.3">4.1.3</a>, and&nbsp;<a href="#%_sec_4.1.4">4.1.4</a>.</p>
 
     <p><a name="%_thm_4.22"></a> <b>Exercise 4.22.</b>&nbsp;&nbsp;<a name="%_idx_4662"></a>Extend the evaluator in this section to support the special form <tt>let</tt>. (See exercise&nbsp;<a href="#%_thm_4.6">4.6</a>.)</p>
 
-    <p><a name="%_thm_4.23"></a> <b>Exercise 4.23.</b>&nbsp;&nbsp;<a name="%_idx_4664"></a>Alyssa P. Hacker doesn't understand why <tt>analyze-sequence</tt> needs to be so complicated. All the other analysis procedures are straightforward transformations of the corresponding evaluation procedures (or <tt>eval</tt> clauses) in section&nbsp;<a href="#%_sec_4.1.1">4.1.1</a>. She expected <tt>analyze-sequence</tt> to look like this:</p>
+    <p><a name="%_thm_4.23"></a> <b>Exercise 4.23.</b>&nbsp;&nbsp;<a name="%_idx_4664"></a>Alyssa P. Hacker doesn’t understand why <tt>analyze-sequence</tt> needs to be so complicated. All the other analysis procedures are straightforward transformations of the corresponding evaluation procedures (or <tt>eval</tt> clauses) in section&nbsp;<a href="#%_sec_4.1.1">4.1.1</a>. She expected <tt>analyze-sequence</tt> to look like this:</p>
 
     <p><tt>(define&nbsp;(analyze-sequence&nbsp;exps)<br />
     &nbsp;&nbsp;(define&nbsp;(execute-sequence&nbsp;procs&nbsp;env)<br />
@@ -1054,12 +1054,12 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(execute-sequence&nbsp;(cdr&nbsp;procs)&nbsp;env))))<br />
     &nbsp;&nbsp;(let&nbsp;((procs&nbsp;(map&nbsp;analyze&nbsp;exps)))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(null?&nbsp;procs)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(error&nbsp;"Empty&nbsp;sequence&nbsp;--&nbsp;ANALYZE"))<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(error&nbsp;“Empty&nbsp;sequence&nbsp;—&nbsp;ANALYZE”))<br />
     &nbsp;&nbsp;&nbsp;&nbsp;(lambda&nbsp;(env)&nbsp;(execute-sequence&nbsp;procs&nbsp;env))))<br /></tt></p>
 
-    <p>Eva Lu Ator explains to Alyssa that the version in the text does more of the work of evaluating a sequence at analysis time. Alyssa's sequence-execution procedure, rather than having the calls to the individual execution procedures built in, loops through the procedures in order to call them: In effect, although the individual expressions in the sequence have been analyzed, the sequence itself has not been.</p>
+    <p>Eva Lu Ator explains to Alyssa that the version in the text does more of the work of evaluating a sequence at analysis time. Alyssa’s sequence-execution procedure, rather than having the calls to the individual execution procedures built in, loops through the procedures in order to call them: In effect, although the individual expressions in the sequence have been analyzed, the sequence itself has not been.</p>
 
-    <p>Compare the two versions of <tt>analyze-sequence</tt>. For example, consider the common case (typical of procedure bodies) where the sequence has just one expression. What work will the execution procedure produced by Alyssa's program do? What about the execution procedure produced by the program in the text above? How do the two versions compare for a sequence with two expressions?</p>
+    <p>Compare the two versions of <tt>analyze-sequence</tt>. For example, consider the common case (typical of procedure bodies) where the sequence has just one expression. What work will the execution procedure produced by Alyssa’s program do? What about the execution procedure produced by the program in the text above? How do the two versions compare for a sequence with two expressions?</p>
 
     <p><a name="%_thm_4.24"></a> <b>Exercise 4.24.</b>&nbsp;&nbsp;Design and carry out some experiments to compare the speed of the original metacircular evaluator with the version in this section. Use your results to estimate the fraction of time that is spent in analysis versus execution for various procedures.</p>
 
@@ -1070,7 +1070,7 @@
     <div class="footnote">
         <p><a href="#call_footnote_Temp_510" name="footnote_Temp_510" id="footnote_Temp_510"><sup><small>3</small></sup></a> Even so, there will remain important aspects of the evaluation process that are not elucidated by our evaluator. The most important of these are the detailed mechanisms by which procedures call other procedures and return values to their callers. We will address these issues in chapter&nbsp;5, where we take a closer look at the evaluation process by implementing the evaluator as a simple register machine.</p>
 
-        <p><a href="#call_footnote_Temp_511" name="footnote_Temp_511" id="footnote_Temp_511"><sup><small>4</small></sup></a> If we grant ourselves the ability to apply primitives, <a name="%_idx_4222"></a>then what remains for us to implement in the evaluator? The job of the evaluator is not to specify the primitives of the language, but rather to provide the connective tissue -- the means of combination and the means of abstraction -- that binds a collection of primitives to form a language. Specifically:</p>
+        <p><a href="#call_footnote_Temp_511" name="footnote_Temp_511" id="footnote_Temp_511"><sup><small>4</small></sup></a> If we grant ourselves the ability to apply primitives, <a name="%_idx_4222"></a>then what remains for us to implement in the evaluator? The job of the evaluator is not to specify the primitives of the language, but rather to provide the connective tissue—the means of combination and the means of abstraction—that binds a collection of primitives to form a language. Specifically:</p>
 
         <ul>
             <li>The evaluator enables us to deal with nested expressions. For example, although simply applying primitives would suffice for evaluating the expression <tt>(+ 1 6)</tt>, it is not adequate for handling <tt>(+ 1 (* 2 3))</tt>. As far as the primitive procedure <tt>+</tt> is concerned, its arguments must be numbers, and it would choke if we passed it the expression <tt>(* 2 3)</tt> as an argument. One important role of the evaluator is to choreograph procedure composition so that <tt>(* 2 3)</tt> is reduced to 6 before being passed as an argument to <tt>+</tt>.</li>
@@ -1082,19 +1082,19 @@
             <li>The evaluator provides the special forms, which must be evaluated differently from procedure calls.</li>
         </ul>
 
-        <p><a href="#call_footnote_Temp_518" name="footnote_Temp_518" id="footnote_Temp_518"><sup><small>5</small></sup></a> We could have simplified the <tt>application?</tt> clause in <tt>eval</tt> by using <tt>map</tt> (and stipulating that <tt>operands</tt> returns a list) rather than writing an explicit <tt>list-of-values</tt> procedure. We chose not to use <tt>map</tt> here to emphasize the fact that the <a name="%_idx_4252"></a><a name="%_idx_4254"></a>evaluator can be implemented without any use of higher-order procedures (and thus could be written in a language that doesn't have higher-order procedures), even though the language that it supports will include higher-order procedures.</p>
+        <p><a href="#call_footnote_Temp_518" name="footnote_Temp_518" id="footnote_Temp_518"><sup><small>5</small></sup></a> We could have simplified the <tt>application?</tt> clause in <tt>eval</tt> by using <tt>map</tt> (and stipulating that <tt>operands</tt> returns a list) rather than writing an explicit <tt>list-of-values</tt> procedure. We chose not to use <tt>map</tt> here to emphasize the fact that the <a name="%_idx_4252"></a><a name="%_idx_4254"></a>evaluator can be implemented without any use of higher-order procedures (and thus could be written in a language that doesn’t have higher-order procedures), even though the language that it supports will include higher-order procedures.</p>
 
         <p><a href="#call_footnote_Temp_520" name="footnote_Temp_520" id="footnote_Temp_520"><sup><small>6</small></sup></a> In this case, the language being implemented and the implementation language are the same. Contemplation of the meaning of <a name="%_idx_4262"></a><tt>true?</tt> here yields expansion of consciousness without the abuse of substance.</p>
 
         <p><a href="#call_footnote_Temp_523" name="footnote_Temp_523" id="footnote_Temp_523"><sup><small>7</small></sup></a> This implementation of <tt>define</tt> ignores a subtle issue in the handling of internal definitions, although it works correctly in most cases. We will see what the problem is and how to solve it in section&nbsp;<a href="#%_sec_4.1.6">4.1.6</a>.</p>
 
-        <p><a href="#call_footnote_Temp_524" name="footnote_Temp_524" id="footnote_Temp_524"><sup><small>8</small></sup></a> As we said when we introduced <tt>define</tt> and <tt>set!</tt>, these values are implementation-dependent in Scheme -- that is, the implementor can choose what value to return.</p>
+        <p><a href="#call_footnote_Temp_524" name="footnote_Temp_524" id="footnote_Temp_524"><sup><small>8</small></sup></a> As we said when we introduced <tt>define</tt> and <tt>set!</tt>, these values are implementation-dependent in Scheme—that is, the implementor can choose what value to return.</p>
 
-        <p><a href="#call_footnote_Temp_526" name="footnote_Temp_526" id="footnote_Temp_526"><sup><small>9</small></sup></a> As mentioned in section&nbsp;<a href="book-Z-H-16.html#%_sec_2.3.1">2.3.1</a>, the evaluator sees a quoted expression as a list beginning with <tt>quote</tt>, even if the expression is typed with the quotation mark. For example, the expression <tt>'a</tt> would be seen by the evaluator as <tt>(quote a)</tt>. See exercise&nbsp;<a href="book-Z-H-16.html#%_thm_2.55">2.55</a>.</p>
+        <p><a href="#call_footnote_Temp_526" name="footnote_Temp_526" id="footnote_Temp_526"><sup><small>9</small></sup></a> As mentioned in section&nbsp;<a href="book-Z-H-16.html#%_sec_2.3.1">2.3.1</a>, the evaluator sees a quoted expression as a list beginning with <tt>quote</tt>, even if the expression is typed with the quotation mark. For example, the expression <tt>‘a</tt> would be seen by the evaluator as <tt>(quote a)</tt>. See exercise&nbsp;<a href="book-Z-H-16.html#%_thm_2.55">2.55</a>.</p>
 
         <p><a href="#call_footnote_Temp_527" name="footnote_Temp_527" id="footnote_Temp_527"><sup><small>10</small></sup></a> The value of an <tt>if</tt> expression when the predicate is false and there is no alternative is unspecified in Scheme; we have chosen here to make it false. We will support the use of the variables <tt>true</tt> and <tt>false</tt> in expressions to be evaluated by binding them in the global environment. See section&nbsp;<a href="#%_sec_4.1.4">4.1.4</a>.</p>
 
-        <p><a href="#call_footnote_Temp_528" name="footnote_Temp_528" id="footnote_Temp_528"><sup><small>11</small></sup></a> These selectors for a list of expressions -- and the corresponding ones for a list of operands -- are not intended as a data abstraction. They are introduced as mnemonic names for the basic list operations in order to make it easier to understand the explicit-control evaluator in section&nbsp;<a href="book-Z-H-34.html#%_sec_5.4">5.4</a>.</p>
+        <p><a href="#call_footnote_Temp_528" name="footnote_Temp_528" id="footnote_Temp_528"><sup><small>11</small></sup></a> These selectors for a list of expressions—and the corresponding ones for a list of operands—are not intended as a data abstraction. They are introduced as mnemonic names for the basic list operations in order to make it easier to understand the explicit-control evaluator in section&nbsp;<a href="book-Z-H-34.html#%_sec_5.4">5.4</a>.</p>
 
         <p><a href="#call_footnote_Temp_530" name="footnote_Temp_530" id="footnote_Temp_530"><sup><small>12</small></sup></a> The value of a <tt>cond</tt> expression when all the predicates are false and there is no <tt>else</tt> clause is unspecified in Scheme; we have chosen here to make it false.</p>
 
@@ -1104,35 +1104,35 @@
 
         <p><a href="#call_footnote_Temp_545" name="footnote_Temp_545" id="footnote_Temp_545"><sup><small>15</small></sup></a> The drawback of this representation (as well as the variant in exercise&nbsp;<a href="#%_thm_4.11">4.11</a>) is that the evaluator may have to search through many frames in order to find the binding for a given variable. <a name="%_idx_4488"></a><a name="%_idx_4490"></a>(Such an approach is referred to as <em>deep binding</em>.) One way to avoid this inefficiency is to make use of a strategy called <em>lexical addressing</em>, which will be discussed in section&nbsp;<a href="book-Z-H-35.html#%_sec_5.5.6">5.5.6</a>.</p>
 
-        <p><a href="#call_footnote_Temp_549" name="footnote_Temp_549" id="footnote_Temp_549"><sup><small>16</small></sup></a> Any procedure defined in the underlying Lisp can be used as a primitive for the metacircular evaluator. The name of a primitive installed in the evaluator need not be the same as the name of its implementation in the underlying Lisp; the names are the same here because the metacircular evaluator implements Scheme itself. Thus, for example, we could put <tt>(list 'first car)</tt> or <tt>(list 'square (lambda (x) (* x x)))</tt> in the list of <tt>primitive-procedures</tt>.</p>
+        <p><a href="#call_footnote_Temp_549" name="footnote_Temp_549" id="footnote_Temp_549"><sup><small>16</small></sup></a> Any procedure defined in the underlying Lisp can be used as a primitive for the metacircular evaluator. The name of a primitive installed in the evaluator need not be the same as the name of its implementation in the underlying Lisp; the names are the same here because the metacircular evaluator implements Scheme itself. Thus, for example, we could put <tt>(list ‘first car)</tt> or <tt>(list ‘square (lambda (x) (* x x)))</tt> in the list of <tt>primitive-procedures</tt>.</p>
 
-        <p><a href="#call_footnote_Temp_550" name="footnote_Temp_550" id="footnote_Temp_550"><sup><small>17</small></sup></a> <tt>Apply-in-underlying-scheme</tt> is the <tt>apply</tt> procedure we have used in earlier chapters. The metacircular evaluator's <tt>apply</tt> procedure (section&nbsp;<a href="#%_sec_4.1.1">4.1.1</a>) models the working of this primitive. Having two different things called <tt>apply</tt> leads to a technical problem in running the metacircular evaluator, because defining the metacircular evaluator's <tt>apply</tt> will mask the definition of the primitive. One way around this is to rename the metacircular <tt>apply</tt> to avoid conflict with the name of the primitive procedure. We have assumed instead that we have saved a reference to the underlying <tt>apply</tt> by doing</p>
+        <p><a href="#call_footnote_Temp_550" name="footnote_Temp_550" id="footnote_Temp_550"><sup><small>17</small></sup></a> <tt>Apply-in-underlying-scheme</tt> is the <tt>apply</tt> procedure we have used in earlier chapters. The metacircular evaluator’s <tt>apply</tt> procedure (section&nbsp;<a href="#%_sec_4.1.1">4.1.1</a>) models the working of this primitive. Having two different things called <tt>apply</tt> leads to a technical problem in running the metacircular evaluator, because defining the metacircular evaluator’s <tt>apply</tt> will mask the definition of the primitive. One way around this is to rename the metacircular <tt>apply</tt> to avoid conflict with the name of the primitive procedure. We have assumed instead that we have saved a reference to the underlying <tt>apply</tt> by doing</p>
 
         <p><tt>(define&nbsp;apply-in-underlying-scheme&nbsp;apply)<br /></tt></p>
 
         <p>before defining the metacircular <tt>apply</tt>. This allows us to access the original version of <tt>apply</tt> under a different name.</p>
 
-        <p><a href="#call_footnote_Temp_551" name="footnote_Temp_551" id="footnote_Temp_551"><sup><small>18</small></sup></a> The primitive procedure <a name="%_idx_4522"></a><a name="%_idx_4524"></a><tt>read</tt> waits for input from the user, and returns the next complete expression that is typed. For example, if the user types <tt>(+ 23 x)</tt>, <tt>read</tt> returns a three-element list containing the symbol <tt>+</tt>, the number 23, and the symbol <tt>x</tt>. <a name="%_idx_4526"></a><a name="%_idx_4528"></a>If the user types <tt>'x</tt>, <tt>read</tt> returns a two-element list containing the symbol <tt>quote</tt> and the symbol <tt>x</tt>.</p>
+        <p><a href="#call_footnote_Temp_551" name="footnote_Temp_551" id="footnote_Temp_551"><sup><small>18</small></sup></a> The primitive procedure <a name="%_idx_4522"></a><a name="%_idx_4524"></a><tt>read</tt> waits for input from the user, and returns the next complete expression that is typed. For example, if the user types <tt>(+ 23 x)</tt>, <tt>read</tt> returns a three-element list containing the symbol <tt>+</tt>, the number 23, and the symbol <tt>x</tt>. <a name="%_idx_4526"></a><a name="%_idx_4528"></a>If the user types <tt>‘x</tt>, <tt>read</tt> returns a two-element list containing the symbol <tt>quote</tt> and the symbol <tt>x</tt>.</p>
 
-        <p><a href="#call_footnote_Temp_553" name="footnote_Temp_553" id="footnote_Temp_553"><sup><small>19</small></sup></a> The fact that the machines are described in Lisp is inessential. If we give our evaluator a Lisp program that behaves as an evaluator for some other language, say C, the Lisp evaluator will emulate the C evaluator, which in turn can emulate any machine described as a C program. Similarly, writing a Lisp evaluator in C produces a C program that can execute any Lisp program. The deep idea here is that any evaluator can emulate any other. Thus, the notion of ``what can in principle be computed'' (ignoring practicalities of time and memory required) is independent of the language or the computer, and instead reflects an underlying notion of <a name="%_idx_4554"></a><em>computability</em>. This was first demonstrated in a clear way by <a name="%_idx_4556"></a>Alan M. Turing (1912-1954), whose 1936 paper laid the foundations for theoretical <a name="%_idx_4558"></a>computer science. In the paper, Turing presented a simple computational model -- now known as a <a name="%_idx_4560"></a><em>Turing machine</em> -- and argued that any ``effective process'' can be formulated as a program for such a machine. (This argument is known as the <a name="%_idx_4562"></a><em>Church-Turing thesis</em>.) Turing then implemented a universal machine, i.e., a Turing machine that behaves as an evaluator for Turing-machine programs. He used this framework to demonstrate that there are well-posed problems that cannot be computed by Turing machines (see exercise&nbsp;<a href="#%_thm_4.15">4.15</a>), and so by implication cannot be formulated as ``effective processes.'' Turing went on to make fundamental contributions to practical computer science as well. For example, he invented the idea of <a name="%_idx_4564"></a>structuring programs using general-purpose subroutines. See <a name="%_idx_4566"></a>Hodges 1983 for a biography of Turing.</p>
+        <p><a href="#call_footnote_Temp_553" name="footnote_Temp_553" id="footnote_Temp_553"><sup><small>19</small></sup></a> The fact that the machines are described in Lisp is inessential. If we give our evaluator a Lisp program that behaves as an evaluator for some other language, say C, the Lisp evaluator will emulate the C evaluator, which in turn can emulate any machine described as a C program. Similarly, writing a Lisp evaluator in C produces a C program that can execute any Lisp program. The deep idea here is that any evaluator can emulate any other. Thus, the notion of “what can in principle be computed” (ignoring practicalities of time and memory required) is independent of the language or the computer, and instead reflects an underlying notion of <a name="%_idx_4554"></a><em>computability</em>. This was first demonstrated in a clear way by <a name="%_idx_4556"></a>Alan M. Turing (1912-1954), whose 1936 paper laid the foundations for theoretical <a name="%_idx_4558"></a>computer science. In the paper, Turing presented a simple computational model—now known as a <a name="%_idx_4560"></a><em>Turing machine</em>—and argued that any “effective process” can be formulated as a program for such a machine. (This argument is known as the <a name="%_idx_4562"></a><em>Church-Turing thesis</em>.) Turing then implemented a universal machine, i.e., a Turing machine that behaves as an evaluator for Turing-machine programs. He used this framework to demonstrate that there are well-posed problems that cannot be computed by Turing machines (see exercise&nbsp;<a href="#%_thm_4.15">4.15</a>), and so by implication cannot be formulated as “effective processes.” Turing went on to make fundamental contributions to practical computer science as well. For example, he invented the idea of <a name="%_idx_4564"></a>structuring programs using general-purpose subroutines. See <a name="%_idx_4566"></a>Hodges 1983 for a biography of Turing.</p>
 
-        <p><a href="#call_footnote_Temp_554" name="footnote_Temp_554" id="footnote_Temp_554"><sup><small>20</small></sup></a> Some people find it counterintuitive that an evaluator, which is implemented by a relatively simple procedure, can emulate programs that are more complex than the evaluator itself. The existence of a universal evaluator machine is a deep and wonderful property of computation. <a name="%_idx_4568"></a><em>Recursion theory</em>, a branch of mathematical logic, is concerned with logical limits of computation. <a name="%_idx_4570"></a>Douglas Hofstadter's beautiful book <em>Gödel, Escher, Bach</em> (1979) explores some of these ideas.</p>
+        <p><a href="#call_footnote_Temp_554" name="footnote_Temp_554" id="footnote_Temp_554"><sup><small>20</small></sup></a> Some people find it counterintuitive that an evaluator, which is implemented by a relatively simple procedure, can emulate programs that are more complex than the evaluator itself. The existence of a universal evaluator machine is a deep and wonderful property of computation. <a name="%_idx_4568"></a><em>Recursion theory</em>, a branch of mathematical logic, is concerned with logical limits of computation. <a name="%_idx_4570"></a>Douglas Hofstadter’s beautiful book <em>Gödel, Escher, Bach</em> (1979) explores some of these ideas.</p>
 
         <p><a href="#call_footnote_Temp_555" name="footnote_Temp_555" id="footnote_Temp_555"><sup><small>21</small></sup></a> Warning: <a name="%_idx_4576"></a>This <tt>eval</tt> primitive is not identical to the <tt>eval</tt> procedure we implemented in section&nbsp;<a href="#%_sec_4.1.1">4.1.1</a>, because it uses <em>actual</em> Scheme environments rather than the sample environment structures we built in section&nbsp;<a href="#%_sec_4.1.3">4.1.3</a>. These actual environments cannot be manipulated by the user as ordinary lists; they must be accessed via <tt>eval</tt> or other special operations. <a name="%_idx_4578"></a>Similarly, the <tt>apply</tt> primitive we saw earlier is not identical to the metacircular <tt>apply</tt>, because it uses actual Scheme procedures rather than the procedure objects we constructed in sections&nbsp;<a href="#%_sec_4.1.3">4.1.3</a> and&nbsp;<a href="#%_sec_4.1.4">4.1.4</a>.</p>
 
-        <p><a href="#call_footnote_Temp_556" name="footnote_Temp_556" id="footnote_Temp_556"><sup><small>22</small></sup></a> The MIT <a name="%_idx_4580"></a><a name="%_idx_4582"></a><a name="%_idx_4584"></a><a name="%_idx_4586"></a>implementation of Scheme includes <tt>eval</tt>, as well as a symbol <tt>user-initial-environment</tt> that is bound to the initial environment in which the user's input expressions are evaluated.</p>
+        <p><a href="#call_footnote_Temp_556" name="footnote_Temp_556" id="footnote_Temp_556"><sup><small>22</small></sup></a> The MIT <a name="%_idx_4580"></a><a name="%_idx_4582"></a><a name="%_idx_4584"></a><a name="%_idx_4586"></a>implementation of Scheme includes <tt>eval</tt>, as well as a symbol <tt>user-initial-environment</tt> that is bound to the initial environment in which the user’s input expressions are evaluated.</p>
 
-        <p><a href="#call_footnote_Temp_558" name="footnote_Temp_558" id="footnote_Temp_558"><sup><small>23</small></sup></a> Although we stipulated that <tt>halts?</tt> is given a procedure object, notice that this reasoning still applies even if <tt>halts?</tt> can gain access to the procedure's text and its environment. <a name="%_idx_4590"></a><a name="%_idx_4592"></a><a name="%_idx_4594"></a><a name="%_idx_4596"></a>This is Turing's celebrated <em>Halting Theorem</em>, which gave the first clear example of a <em>non-computable</em> problem, i.e., a well-posed task that cannot be carried out as a computational procedure.</p>
+        <p><a href="#call_footnote_Temp_558" name="footnote_Temp_558" id="footnote_Temp_558"><sup><small>23</small></sup></a> Although we stipulated that <tt>halts?</tt> is given a procedure object, notice that this reasoning still applies even if <tt>halts?</tt> can gain access to the procedure’s text and its environment. <a name="%_idx_4590"></a><a name="%_idx_4592"></a><a name="%_idx_4594"></a><a name="%_idx_4596"></a>This is Turing’s celebrated <em>Halting Theorem</em>, which gave the first clear example of a <em>non-computable</em> problem, i.e., a well-posed task that cannot be carried out as a computational procedure.</p>
 
-        <p><a href="#call_footnote_Temp_559" name="footnote_Temp_559" id="footnote_Temp_559"><sup><small>24</small></sup></a> Wanting programs to not depend on this evaluation mechanism is the reason for the ``management is not responsible'' remark in footnote&nbsp;<a href="book-Z-H-10.html#footnote_Temp_45">28</a> of chapter&nbsp;1. By insisting that internal definitions come first and do not use each other while the definitions are being evaluated, the IEEE standard for Scheme leaves implementors some choice in the mechanism used to evaluate these definitions. The choice of one evaluation rule rather than another here may seem like a small issue, affecting only the interpretation of ``badly formed'' programs. However, we will see in section&nbsp;<a href="book-Z-H-35.html#%_sec_5.5.6">5.5.6</a> that moving to a model of simultaneous scoping for internal definitions avoids some nasty difficulties that would otherwise arise in implementing a compiler.</p>
+        <p><a href="#call_footnote_Temp_559" name="footnote_Temp_559" id="footnote_Temp_559"><sup><small>24</small></sup></a> Wanting programs to not depend on this evaluation mechanism is the reason for the “management is not responsible” remark in footnote&nbsp;<a href="book-Z-H-10.html#footnote_Temp_45">28</a> of chapter&nbsp;1. By insisting that internal definitions come first and do not use each other while the definitions are being evaluated, the IEEE standard for Scheme leaves implementors some choice in the mechanism used to evaluate these definitions. The choice of one evaluation rule rather than another here may seem like a small issue, affecting only the interpretation of “badly formed” programs. However, we will see in section&nbsp;<a href="book-Z-H-35.html#%_sec_5.5.6">5.5.6</a> that moving to a model of simultaneous scoping for internal definitions avoids some nasty difficulties that would otherwise arise in implementing a compiler.</p>
 
-        <p><a href="#call_footnote_Temp_560" name="footnote_Temp_560" id="footnote_Temp_560"><sup><small>25</small></sup></a> The IEEE standard for Scheme allows for different implementation strategies by specifying that it is up to the programmer to obey this restriction, not up to the implementation to enforce it. Some Scheme implementations, including <a name="%_idx_4610"></a>MIT Scheme, use the transformation shown above. Thus, some programs that don't obey this restriction will in fact run in such implementations.</p>
+        <p><a href="#call_footnote_Temp_560" name="footnote_Temp_560" id="footnote_Temp_560"><sup><small>25</small></sup></a> The IEEE standard for Scheme allows for different implementation strategies by specifying that it is up to the programmer to obey this restriction, not up to the implementation to enforce it. Some Scheme implementations, including <a name="%_idx_4610"></a>MIT Scheme, use the transformation shown above. Thus, some programs that don’t obey this restriction will in fact run in such implementations.</p>
 
-        <p><a href="#call_footnote_Temp_565" name="footnote_Temp_565" id="footnote_Temp_565"><sup><small>26</small></sup></a> The MIT implementors of Scheme support Alyssa on the following grounds: Eva is in principle correct -- the definitions should be regarded as simultaneous. But it seems difficult to implement a general, efficient mechanism that does what Eva requires. In the absence of such a mechanism, it is better to generate an error in the difficult cases of simultaneous definitions (Alyssa's notion) than to produce an incorrect answer (as Ben would have it).</p>
+        <p><a href="#call_footnote_Temp_565" name="footnote_Temp_565" id="footnote_Temp_565"><sup><small>26</small></sup></a> The MIT implementors of Scheme support Alyssa on the following grounds: Eva is in principle correct—the definitions should be regarded as simultaneous. But it seems difficult to implement a general, efficient mechanism that does what Eva requires. In the absence of such a mechanism, it is better to generate an error in the difficult cases of simultaneous definitions (Alyssa’s notion) than to produce an incorrect answer (as Ben would have it).</p>
 
-        <p><a href="#call_footnote_Temp_568" name="footnote_Temp_568" id="footnote_Temp_568"><sup><small>27</small></sup></a> This example illustrates a programming trick for formulating recursive procedures without using <tt>define</tt>. The <a name="%_idx_4628"></a>most general trick of this sort is the <em>Y</em> <em>operator</em>, which can be used to give a ``pure <img src="book-Z-G-D-6.gif" border="0" />-calculus'' implementation of <a name="%_idx_4630"></a><a name="%_idx_4632"></a>recursion. (See Stoy 1977 for details on the lambda calculus, and Gabriel 1988 for an exposition of the <em>Y</em> operator in Scheme.)</p>
+        <p><a href="#call_footnote_Temp_568" name="footnote_Temp_568" id="footnote_Temp_568"><sup><small>27</small></sup></a> This example illustrates a programming trick for formulating recursive procedures without using <tt>define</tt>. The <a name="%_idx_4628"></a>most general trick of this sort is the <em>Y</em> <em>operator</em>, which can be used to give a “pure <img src="book-Z-G-D-6.gif" border="0" />-calculus” implementation of <a name="%_idx_4630"></a><a name="%_idx_4632"></a>recursion. (See Stoy 1977 for details on the lambda calculus, and Gabriel 1988 for an exposition of the <em>Y</em> operator in Scheme.)</p>
 
-        <p><a href="#call_footnote_Temp_569" name="footnote_Temp_569" id="footnote_Temp_569"><sup><small>28</small></sup></a> This technique is an integral part of the compilation process, which we shall discuss in chapter&nbsp;5. Jonathan Rees wrote a Scheme <a name="%_idx_4644"></a><a name="%_idx_4646"></a><a name="%_idx_4648"></a><a name="%_idx_4650"></a>interpreter like this in about 1982 for the T project (Rees and Adams 1982). Marc Feeley (1986) (see also Feeley and Lapalme 1987) independently invented this technique in his master's thesis.</p>
+        <p><a href="#call_footnote_Temp_569" name="footnote_Temp_569" id="footnote_Temp_569"><sup><small>28</small></sup></a> This technique is an integral part of the compilation process, which we shall discuss in chapter&nbsp;5. Jonathan Rees wrote a Scheme <a name="%_idx_4644"></a><a name="%_idx_4646"></a><a name="%_idx_4648"></a><a name="%_idx_4650"></a>interpreter like this in about 1982 for the T project (Rees and Adams 1982). Marc Feeley (1986) (see also Feeley and Lapalme 1987) independently invented this technique in his master’s thesis.</p>
 
         <p><a href="#call_footnote_Temp_570" name="footnote_Temp_570" id="footnote_Temp_570"><sup><small>29</small></sup></a> There is, however, an important part of the variable search that <em>can</em> be done as part of the syntactic analysis. As we will show in section&nbsp;<a href="book-Z-H-35.html#%_sec_5.5.6">5.5.6</a>, one can determine the position in the environment structure where the value of the variable will be found, thus obviating the need to scan the environment for the entry that matches the variable.</p>
 
